@@ -129,9 +129,6 @@ public:
 	void ClearGroupMembers(EGroupType Group);
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
-	void ClearGroupMembers(EGroupType Group);
-
-	UFUNCTION(BlueprintCallable, Category = "Group")
 	void AddMembersToGroup( TArray<AActor*> Members, EGroupType Group, bool Override = false);
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
