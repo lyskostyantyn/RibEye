@@ -1,0 +1,37 @@
+Line Name		Duration 	Count	Cooldown	Line Text
+GRE_REG			1		1	5.0		Hi, there
+GRE_REG_REP		1		1	5.0		Hi
+GRE_ASK			2		1	5.0		Hi, everything is fine?
+GRE_REP_ASK		1		1	5.0		Yeah, you?
+GRE_REP_ON_Q		1		1	5.0		Good
+GRE_REP_ON_Q		1		1	5.0		Fine
+GRE_REP_ON_Q_LONG	1		1	5.0		Could be better...
+GRE_REP_ON_Q_LONG_A	1		1	5.0		Life is life
+INV_M_ASK		2		1	5.0		Hi, have you heard that?
+INV_S_REP_Y_ASK_J	2		1	5.0		Yeah, want to investigate together?
+INV_S_REP_N_ASK_J	1		1	5.0		Nope. Need a help?
+INV_M_REP_C		1		1	5.0		Yeah, sure.
+INV_M_REP_C		1		1	5.0		Sure, go
+INV_M_REP_D		1		1	5.0		Nah, I am fine.
+INV_M_REP_D		1		1	5.0		Nah, I'll handle that.
+INV_M_REP_D_MULT	1		1	5.0		No thanks, we will handle that.
+INV_M_REP_D_MULT	1		1	5.0		We have enough people for that.
+INV_M_REP_C_SOME	1		1	5.0		Yeah, <N> of you will be enough.
+INV_S_ASK		1		1	5.0		Did something happen?
+INV_M_REP_Y_ASK_J	2		1	5.0		Yeah. Can you help me to investigate that?
+INV_M_REP_Y_Q_D		1		1	5.0		Yeah. I'll handle that.
+INV_M_REP_Y_Q_D_MULT	1		1	5.0		Yeah. We'll handle that.
+INV_S_REP_C		1		1	5.0		Yeah, sure
+INV_S_REP_D		2		1	5.0		Nah, don't think it's worth that
+SURPRISE_ASK_NOONE	1		1	5.0		Hm? What is that?
+INV_SUR_S_ASK		1		1	5.0		What? Have you heard something?
+INV_SUR_S_ASK_J		1		1	5.0		I heard it too, let's check together
+INV_BOTH_M_ASK_J	1		1	5.0		Ow, you are here too. Right when I needed a help.
+INV_BOTH_S_REP_C	1		1	5.0		Nice, let's keep searching together.
+INV_BOTH_S_REP_D	1		1	5.0		Nah, I guess, I'll leave you here.
+INV_BOTH_S_ASK_J	1		1	5.0		Ow, someone reacts faster. Need a hand?
+INV_S_ASK_J_EXIST	1		1	5.0		Need more help?
+COM_INV_S2_ASK_S_J_C	1		1	5.0		I guess he didn't hear, let check him then
+COM_INV_S2_ASK_S_J_D	1		1	5.0		I guess he is fine to investigate himself 
+COM_INV_S2_ASK_M_J	1		1	5.0		If you want I can join instead
+COM_GRE_IGN		1		1	5.0		That dude just ignored you

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\RibEye.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\RibEye.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\RibEyeEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\RibEye">
+      <UniqueIdentifier>{5B5FBB25-1E53-35D4-A094-1A71F392E099}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\RibEye\DialogueComponent.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\DialogueComponent.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\DialogueManager.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\DialogueManager.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\KnowledgeComponent.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\KnowledgeComponent.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <None Include="..\..\Source\RibEye\RibEye.Build.cs">
+      <Filter>Source\RibEye</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\RibEye\RibEye.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEye.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeCharacter.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeCharacter.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeGameMode.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeGameMode.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeGameStateBase.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\RibEyeGameStateBase.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\SocialComponent.cpp">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RibEye\SocialComponent.h">
+      <Filter>Source\RibEye</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\RibEye\Enums.h">
+      <Filter>Source\RibEye</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

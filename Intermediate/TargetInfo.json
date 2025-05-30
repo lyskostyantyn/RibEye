@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "RibEye",
+			"Path": "..\\Source\\RibEye.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "RibEyeEditor",
+			"Path": "..\\Source\\RibEyeEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

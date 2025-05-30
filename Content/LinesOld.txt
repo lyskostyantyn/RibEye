@@ -1,0 +1,27 @@
+Line Name					Type	Duration 	Count	Cooldown	Line Text
+GREETING_01		GRE_REG			GR	1		1	5.0		Hi, there
+GREETING_REPLY_01	GRE_REG_REP		GRE	1		1	5.0		Hi
+GREETING_02		GRE_ASK			GR	2		1	5.0		Hi, everything is fine?
+GREETING_REPLY_02	GRE_REP_ASK		GRR	1		1	5.0		Yeah, you?
+GREETING_REPLY_02_2_1	GRE_REP_ON_Q		GRE	1		1	5.0		Good
+GREETING_REPLY_02_2_2	GRE_REP_ON_Q		GRE	1		1	5.0		Fine
+GREETING_REPLY_02_2_3	GRE_REP_ON_Q_LONG	GRE	1		1	5.0		Could be better...
+GREETING_REPLY_02_3	GRE_REP_ON_Q_LONG_A	GRR	1		1	5.0		Life is life
+INVESTIGATE_INV_01	INV_GR_M_ASK		INVM	2		1	5.0		Hi, have you heard that?
+INVESTIGATE_REP_01_Y	INV_S_REP_Y_ASK_J	INVD	2		1	5.0		Yeah, want to investigate together?
+INVESTIGATE_REP_01_N	INV_S_REP_N_ASK_J	INVD	1		1	5.0		Nope. Need a help?
+INVESTIGATE_INV_A_01_C	INV_M_REP_C		INVRM	1		1	5.0		Yeah, sure.
+INVESTIGATE_INV_A_01_D	INV_M_REP_D		INVRM	1		1	5.0		Nah, I am fine.
+INVESTIGATE_INV_02	INV_S_ASK		INVS	1		1	5.0		Did something happen?
+INVESTIGATE_REP_02	INV_M_REP_Y_ASK_J	INVD	2		1	5.0		Yeah. Can you help me to investigate that?
+INVESTIGATE_INV_A_02_C	INV_S_REP_C		INVRS	1		1	5.0		Yeah, sure
+INVESTIGATE_INV_A_02_D	INV_S_REP_D		INVRS	2		1	5.0		Nah, don't think it's worth that
+SURPRISE_01		SURPRISE_ASK_NOONE	SUR	1		1	5.0		Hm? What is that?
+INVESTIGATE_SUR_01_N	INV_SUR_S_ASK		INVD	1		1	5.0		What? Have you heard something?
+INVESTIGATE_SUR_01_Y	INV_SUR_S_ASK_J		INVD	1		1	5.0		I heard it too, let's check together
+INVESTIGATE_SUR_A_01_C	INV_M_REP_C(REPEAT)	INVRM	1		1	5.0		Sure, go
+INVESTIGATE_SUR_A_01_D	INV_M_REP_D(REPEAT)	INVRM	1		1	5.0		Nah, I'll handle that.
+INVESTIGATE_INV_03	INV_BOTH_M_ASK_J	INVBM	1		1	5.0		Ow, you are here too. Right when I needed a help.
+INVESTIGATE_A_03_C	INV_BOTH_S_REP_C	INVRS	1		1	5.0		Nice, let's keep searching together.
+INVESTIGATE_A_03_D	INV_BOTH_S_REP_D	INVRS	1		1	5.0		Nah, I guess, I'll leave you here.
+INVESTIGATE_INV_04	INV_BOTH_S_ASK_J	INVBS	1		1	5.0		Ow, someone reacts faster. Need a hand?
