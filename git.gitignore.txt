@@ -1,0 +1,25 @@
+# Ignore the Binaries, Intermediate, and Saved folders
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Ignore the .vs folder if using Visual Studio
+.vs/
+
+# Ignore the project files (such as .suo, .user, and .userprefs) that are specific to the IDE
+*.suo
+*.user
+*.userprefs
+
+# Ignore Unreal Engine-specific files
+*.xcodeproj
+*.xcworkspace
+*.opensdf
+*.sdf
+
+# Ignore any backups
+*.bak
+
+# Ignore any log files
+*.log

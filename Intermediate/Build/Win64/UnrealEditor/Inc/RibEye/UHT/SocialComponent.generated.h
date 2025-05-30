@@ -39,15 +39,22 @@ template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyGroupInfo>();
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyKnownState>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_53_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_56_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FAllyGroup_Statics; \
+	RIBEYE_API static class UScriptStruct* StaticStruct();
+
+
+template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyGroup>();
+
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_63_DELEGATE \
 RIBEYE_API void FSocialComponentOnAlertnessChangedSignature_DelegateWrapper(const FMulticastScriptDelegate& SocialComponentOnAlertnessChangedSignature, EAlert AlertState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_55_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_65_DELEGATE \
 RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(const FMulticastScriptDelegate& SocialComponentOnAllyChangedStateSignature, AActor* Ally, EAlert AlertState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execGetFaction); \
 	DECLARE_FUNCTION(execShouldIgnoreAnsweringLineType); \
 	DECLARE_FUNCTION(execIsAllyResolved); \
@@ -68,7 +75,7 @@ RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(cons
 	DECLARE_FUNCTION(execSetAlertState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_INCLASS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSocialComponent(); \
 	friend struct Z_Construct_UClass_USocialComponent_Statics; \
@@ -77,7 +84,7 @@ public: \
 	DECLARE_SERIALIZER(USocialComponent)
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_ENHANCED_CONSTRUCTORS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	USocialComponent(USocialComponent&&); \
@@ -89,13 +96,13 @@ public: \
 	NO_API virtual ~USocialComponent();
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_57_PROLOG
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_67_PROLOG
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_INCLASS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_60_ENHANCED_CONSTRUCTORS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_INCLASS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

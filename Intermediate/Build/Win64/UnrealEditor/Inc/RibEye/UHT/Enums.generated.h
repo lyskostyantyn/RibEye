@@ -104,7 +104,8 @@ template<> RIBEYE_API UEnum* StaticEnum<EIgnoreDialogueType>();
 #define FOREACH_ENUM_EGROUPTYPE(op) \
 	op(EGroupType::PATROL) \
 	op(EGroupType::INVESTIGATE) \
-	op(EGroupType::ATTACK) 
+	op(EGroupType::ATTACK) \
+	op(EGroupType::OWN) 
 
 enum class EGroupType : uint8;
 template<> struct TIsUEnumClass<EGroupType> { enum { Value = true }; };

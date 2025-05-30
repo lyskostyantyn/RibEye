@@ -58,30 +58,30 @@ void USocialComponent::SetAlertState(EAlert NewAlertState)
 
 void USocialComponent::AddActorToGroup(AActor* Actor, EGroupType Group)
 {
-	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
+	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
-		CurrentKnownGroups.Add({Group, TArray<AActor*>{Actor} });
+		CurrentKnownGroups.Add({Group, FAllyGroup{TArray<AActor*>{Actor}} });
 	}
 	else
 	{
-		GroupMembers->AddUnique(Actor);
+		GroupMembers->Actors.AddUnique(Actor);
 	}
 }
 
 void USocialComponent::RemoveActorFromGroup(AActor* Actor, EGroupType Group)
 {
-	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
+	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (GroupMembers)
 	{
-		GroupMembers->Remove(Actor);
+		GroupMembers->Actors.Remove(Actor);
 	}
 }
 
 const TArray<AActor*>& USocialComponent::GetGroupMembers(EGroupType Group)
 {
-	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
-	return GroupMembers ? *GroupMembers : EMPTY_ACTOR_LIST;
+	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
+	return GroupMembers ? GroupMembers->Actors : EMPTY_ACTOR_LIST;
 }
 
 void USocialComponent::ClearGroupMembers(EGroupType Group)
@@ -91,21 +91,21 @@ void USocialComponent::ClearGroupMembers(EGroupType Group)
 
 void USocialComponent::AddMembersToGroup(TArray<AActor*> Members, EGroupType Group, bool Override/* = false*/)
 {
-	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
+	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
-		CurrentKnownGroups.Add({ Group, Members });
+		CurrentKnownGroups.Add({ Group, FAllyGroup{Members} });
 	}
 	else
 	{
 		if (Override)
 		{
-			GroupMembers->Empty();
+			GroupMembers->Actors.Empty();
 		}
 
 		for (auto& Member : Members)
 		{
-			GroupMembers->AddUnique(Member);
+			GroupMembers->Actors.AddUnique(Member);
 		}
 	}
 }
@@ -141,8 +141,8 @@ int USocialComponent::GetMyGroupNumber() const
 
 TArray<AActor*> USocialComponent::GetMySocialGroup() const
 {
-	const TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(AlertToGroup(AlertState));
-	return GroupMembers ? *GroupMembers : TArray<AActor*>{GetOwner()};
+	const FAllyGroup* GroupMembers = CurrentKnownGroups.Find(EGroupType::OWN);
+	return GroupMembers ? GroupMembers->Actors : TArray<AActor*>{GetOwner()};
 }
 
 int USocialComponent::GetSocialGroupSize() const

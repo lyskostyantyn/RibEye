@@ -50,6 +50,16 @@ public:
 	bool KnowledgeResolved;
 };
 
+USTRUCT(BlueprintType)
+struct FAllyGroup
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AActor*> Actors;
+};
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSocialComponentOnAlertnessChangedSignature, EAlert, AlertState);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSocialComponentOnAllyChangedStateSignature, AActor*, Ally, EAlert, AlertState);
@@ -75,7 +85,8 @@ protected:
 	// used for personal resolve
 	bool UpdateAllyKnownState_Internal(AActor* Ally, EAlert AllyAlertState, bool IsKnowledgeResolved = false);
 
-	TMap<EGroupType, TArray<AActor*>> CurrentKnownGroups;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AllyGroup")
+	TMap<EGroupType, FAllyGroup> CurrentKnownGroups;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Faction")
 	int Faction;
@@ -91,6 +102,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
 	FSocialSettings Settings;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
 	TMap<AActor*, FAllyKnownState> AllyKnownStates;
 
 	UKnowledgeComponent* KnowledgeComponent;
@@ -112,6 +124,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	const TArray<AActor*>& GetGroupMembers( EGroupType Group );
+
+	UFUNCTION(BlueprintCallable, Category = "Group")
+	void ClearGroupMembers(EGroupType Group);
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	void ClearGroupMembers(EGroupType Group);

@@ -541,6 +541,8 @@ struct Z_Construct_UEnum_RibEye_EGroupType_Statics
 		{ "INVESTIGATE.DisplayName", "Investigate" },
 		{ "INVESTIGATE.Name", "EGroupType::INVESTIGATE" },
 		{ "ModuleRelativePath", "Enums.h" },
+		{ "OWN.DisplayName", "Own group" },
+		{ "OWN.Name", "EGroupType::OWN" },
 		{ "PATROL.DisplayName", "Patrol" },
 		{ "PATROL.Name", "EGroupType::PATROL" },
 	};
@@ -549,6 +551,7 @@ struct Z_Construct_UEnum_RibEye_EGroupType_Statics
 		{ "EGroupType::PATROL", (int64)EGroupType::PATROL },
 		{ "EGroupType::INVESTIGATE", (int64)EGroupType::INVESTIGATE },
 		{ "EGroupType::ATTACK", (int64)EGroupType::ATTACK },
+		{ "EGroupType::OWN", (int64)EGroupType::OWN },
 	};
 	static const UECodeGen_Private::FEnumParams EnumParams;
 };
@@ -782,13 +785,13 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ ELineType_StaticEnum, TEXT("ELineType"), &Z_Registration_Info_UEnum_ELineType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4109494101U) },
 		{ EAllianceType_StaticEnum, TEXT("EAllianceType"), &Z_Registration_Info_UEnum_EAllianceType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2366655750U) },
 		{ EIgnoreDialogueType_StaticEnum, TEXT("EIgnoreDialogueType"), &Z_Registration_Info_UEnum_EIgnoreDialogueType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1557341401U) },
-		{ EGroupType_StaticEnum, TEXT("EGroupType"), &Z_Registration_Info_UEnum_EGroupType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4065326185U) },
+		{ EGroupType_StaticEnum, TEXT("EGroupType"), &Z_Registration_Info_UEnum_EGroupType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 491346619U) },
 		{ EAlert_StaticEnum, TEXT("EAlert"), &Z_Registration_Info_UEnum_EAlert, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3817312066U) },
 		{ EJoinReplyType_StaticEnum, TEXT("EJoinReplyType"), &Z_Registration_Info_UEnum_EJoinReplyType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1089151379U) },
 		{ EBarkPlayingRule_StaticEnum, TEXT("EBarkPlayingRule"), &Z_Registration_Info_UEnum_EBarkPlayingRule, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1912644817U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_639069883(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_4047705705(TEXT("/Script/RibEye"),
 	nullptr, 0,
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_Statics::EnumInfo));

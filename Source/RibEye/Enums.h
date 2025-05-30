@@ -92,6 +92,7 @@ enum class EGroupType : uint8
 	PATROL UMETA(DisplayName = "Patrol"),
 	INVESTIGATE UMETA(DisplayName = "Investigate"),
 	ATTACK UMETA(DisplayName = "Attack"),
+	OWN UMETA(DisplayName = "Own group"),
 };
 
 UENUM(BlueprintType)
