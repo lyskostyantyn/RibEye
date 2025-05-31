@@ -61,7 +61,15 @@ void USocialComponent::AddActorToGroup(AActor* Actor, EGroupType Group)
 	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
-		CurrentKnownGroups.Add({Group, FAllyGroup{TArray<AActor*>{Actor}} });
+		// TODO rewrite that
+		if (Actor != GetOwner() && Group == EGroupType::OWN)
+		{
+			CurrentKnownGroups.Add({ Group, FAllyGroup{TArray<AActor*>{GetOwner(), Actor}} });
+		}
+		else
+		{
+			CurrentKnownGroups.Add({ Group, FAllyGroup{TArray<AActor*>{Actor}} });
+		}
 	}
 	else
 	{
@@ -205,6 +213,11 @@ void USocialComponent::UpdateAllyKnownState_Vision(AActor* Ally, EAlert AllyAler
 
 bool USocialComponent::UpdateAllyKnownState_Internal(AActor* Ally, EAlert AllyAlertState, bool IsKnowledgeResolved)
 {
+	if (Ally == nullptr || !IsValid(Ally))
+	{
+		return false;
+	}
+
 	FAllyKnownState* State = AllyKnownStates.Find(Ally);
 	bool StateChanged = false;
 	if (!State)
@@ -296,5 +309,22 @@ bool USocialComponent::IsAllyResolved(AActor* Ally) const
 	}
 
 	return State->KnowledgeResolved;
+}
+
+FString USocialComponent::GetDebugText() const
+{
+	FString Result = "Known Ally States: \n";
+	for (auto& State : AllyKnownStates)
+	{
+		Result += State.Key->GetActorLabel() + " - " + FString::FromInt(static_cast<int>(State.Value.AlertState)) + "\n";
+	}
+
+	Result += "My group: \n";
+	for (auto& State : GetMySocialGroup())
+	{
+		Result += State->GetActorLabel() + "\n";
+	}
+
+	return Result;
 }
 

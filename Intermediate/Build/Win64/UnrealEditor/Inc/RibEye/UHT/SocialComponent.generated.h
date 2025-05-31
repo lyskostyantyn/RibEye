@@ -55,12 +55,10 @@ RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(cons
 
 
 #define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetDebugText); \
 	DECLARE_FUNCTION(execGetFaction); \
 	DECLARE_FUNCTION(execShouldIgnoreAnsweringLineType); \
 	DECLARE_FUNCTION(execIsAllyResolved); \
-	DECLARE_FUNCTION(execUpdateAllyKnownState_Vision); \
-	DECLARE_FUNCTION(execUpdateAllyKnownState); \
-	DECLARE_FUNCTION(execRemoveActorFromGroup); \
 	DECLARE_FUNCTION(execGetTextID); \
 	DECLARE_FUNCTION(execGetID); \
 	DECLARE_FUNCTION(execSetupID); \
@@ -68,11 +66,14 @@ RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(cons
 	DECLARE_FUNCTION(execGetMySocialGroup); \
 	DECLARE_FUNCTION(execGetMyGroupNumber); \
 	DECLARE_FUNCTION(execIsFromMySocialGroup); \
-	DECLARE_FUNCTION(execAddMembersToGroup); \
 	DECLARE_FUNCTION(execClearGroupMembers); \
 	DECLARE_FUNCTION(execGetGroupMembers); \
+	DECLARE_FUNCTION(execAddMembersToGroup); \
+	DECLARE_FUNCTION(execRemoveActorFromGroup); \
 	DECLARE_FUNCTION(execAddActorToGroup); \
-	DECLARE_FUNCTION(execSetAlertState);
+	DECLARE_FUNCTION(execSetAlertState); \
+	DECLARE_FUNCTION(execUpdateAllyKnownState_Vision); \
+	DECLARE_FUNCTION(execUpdateAllyKnownState);
 
 
 #define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_INCLASS_NO_PURE_DECLS \

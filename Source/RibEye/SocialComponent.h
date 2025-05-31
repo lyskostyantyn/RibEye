@@ -116,6 +116,14 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Components|StateChange")
 	FSocialComponentOnAllyChangedStateSignature OnSawAllyChangedState;
 
+	// used mainly for hearing
+	UFUNCTION(BlueprintCallable, Category = "Group")
+	void UpdateAllyKnownState(AActor* Ally, EAlert AllyAlertState, bool IsKnowledgeResolved = false);
+
+	// used for vision
+	UFUNCTION(BlueprintCallable, Category = "Group")
+	void UpdateAllyKnownState_Vision(AActor* Ally, EAlert AllyAlertState);
+
 	UFUNCTION(BlueprintCallable, Category = "State")
 	void SetAlertState(EAlert NewAlertState);
 
@@ -123,13 +131,16 @@ public:
 	void AddActorToGroup( AActor* Actor, EGroupType Group );
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
+	void RemoveActorFromGroup(AActor* Actor, EGroupType Group);
+
+	UFUNCTION(BlueprintCallable, Category = "Group")
+	void AddMembersToGroup(TArray<AActor*> Members, EGroupType Group, bool Override = false);
+
+	UFUNCTION(BlueprintCallable, Category = "Group")
 	const TArray<AActor*>& GetGroupMembers( EGroupType Group );
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	void ClearGroupMembers(EGroupType Group);
-
-	UFUNCTION(BlueprintCallable, Category = "Group")
-	void AddMembersToGroup( TArray<AActor*> Members, EGroupType Group, bool Override = false);
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	bool IsFromMySocialGroup(AActor* Actor) const;
@@ -152,17 +163,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "State")
 	FString GetTextID() const;
 
-	UFUNCTION(BlueprintCallable, Category = "Group")
-	void RemoveActorFromGroup( AActor* Actor, EGroupType Group);
-
-	// used mainly for hearing
-	UFUNCTION(BlueprintCallable, Category = "Group")
-	void UpdateAllyKnownState(AActor* Ally, EAlert AllyAlertState, bool IsKnowledgeResolved = false);
-
-	// used for vision
-	UFUNCTION(BlueprintCallable, Category = "Group")
-	void UpdateAllyKnownState_Vision(AActor* Ally, EAlert AllyAlertState);
-
 	UFUNCTION(BlueprintCallable, Category = "Faction")
 	bool IsAllyResolved(AActor* Ally) const;
 
@@ -171,4 +171,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Faction")
 	int GetFaction() const { return Faction; }
+
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	FString GetDebugText() const;
 };
