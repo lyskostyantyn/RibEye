@@ -58,6 +58,11 @@ void USocialComponent::SetAlertState(EAlert NewAlertState)
 
 void USocialComponent::AddActorToGroup(AActor* Actor, EGroupType Group)
 {
+	if (!IsValid(Actor))
+	{
+		return;
+	}
+
 	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
@@ -113,7 +118,10 @@ void USocialComponent::AddMembersToGroup(TArray<AActor*> Members, EGroupType Gro
 
 		for (auto& Member : Members)
 		{
-			GroupMembers->Actors.AddUnique(Member);
+			if (IsValid(Member))
+			{
+				GroupMembers->Actors.AddUnique(Member);
+			}		
 		}
 	}
 }
