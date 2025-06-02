@@ -10,28 +10,30 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class AActor;
+enum class EAlert : uint8;
 struct FLastKnownData;
 #ifdef RIBEYE_KnowledgeComponent_generated_h
 #error "KnowledgeComponent.generated.h already included, missing '#pragma once' in KnowledgeComponent.h"
 #endif
 #define RIBEYE_KnowledgeComponent_generated_h
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_12_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_13_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FLastKnownData_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FLastKnownData>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_28_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_26_DELEGATE \
 RIBEYE_API void FKnowledgeComponentOnTargetSelectedSignature_DelegateWrapper(const FMulticastScriptDelegate& KnowledgeComponentOnTargetSelectedSignature, AActor* Target);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_30_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_28_DELEGATE \
 RIBEYE_API void FKnowledgeComponentOnLastTargetLostSignature_DelegateWrapper(const FMulticastScriptDelegate& KnowledgeComponentOnLastTargetLostSignature, AActor* Target, FLastKnownData const& LastKnownData);
 
 
 #define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_35_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execIsResolvedAllyNearby); \
 	DECLARE_FUNCTION(execGetSpottedActors); \
 	DECLARE_FUNCTION(execRegisterKnowledge); \
 	DECLARE_FUNCTION(execOnEnemySpotted);

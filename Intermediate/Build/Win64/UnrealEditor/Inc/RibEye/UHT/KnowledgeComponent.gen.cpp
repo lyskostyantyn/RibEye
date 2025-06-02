@@ -15,6 +15,7 @@ ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 RIBEYE_API UClass* Z_Construct_UClass_UKnowledgeComponent();
 RIBEYE_API UClass* Z_Construct_UClass_UKnowledgeComponent_NoRegister();
+RIBEYE_API UEnum* Z_Construct_UEnum_RibEye_EAlert();
 RIBEYE_API UFunction* Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature();
 RIBEYE_API UFunction* Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnTargetSelectedSignature__DelegateSignature();
 RIBEYE_API UScriptStruct* Z_Construct_UScriptStruct_FLastKnownData();
@@ -42,10 +43,6 @@ struct Z_Construct_UScriptStruct_FLastKnownData_Statics
 		{ "BlueprintType", "true" },
 		{ "ModuleRelativePath", "KnowledgeComponent.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Owner_MetaData[] = {
-		{ "Category", "LastKnownData" },
-		{ "ModuleRelativePath", "KnowledgeComponent.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LastKnownPosition_MetaData[] = {
 		{ "Category", "LastKnownData" },
 		{ "ModuleRelativePath", "KnowledgeComponent.h" },
@@ -59,7 +56,6 @@ struct Z_Construct_UScriptStruct_FLastKnownData_Statics
 		{ "ModuleRelativePath", "KnowledgeComponent.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Owner;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_LastKnownPosition;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_LastKnownMoveDirection;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_LastKnownTime;
@@ -70,12 +66,10 @@ struct Z_Construct_UScriptStruct_FLastKnownData_Statics
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_Owner = { "Owner", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownData, Owner), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Owner_MetaData), NewProp_Owner_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownPosition = { "LastKnownPosition", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownData, LastKnownPosition), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownPosition_MetaData), NewProp_LastKnownPosition_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownMoveDirection = { "LastKnownMoveDirection", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownData, LastKnownMoveDirection), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownMoveDirection_MetaData), NewProp_LastKnownMoveDirection_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownTime = { "LastKnownTime", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownData, LastKnownTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownTime_MetaData), NewProp_LastKnownTime_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FLastKnownData_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_Owner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownPosition,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownMoveDirection,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownData_Statics::NewProp_LastKnownTime,
@@ -170,7 +164,7 @@ struct Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSi
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::NewProp_Target = { "Target", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_RibEye_eventKnowledgeComponentOnLastTargetLostSignature_Parms, Target), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::NewProp_LastKnownData = { "LastKnownData", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_RibEye_eventKnowledgeComponentOnLastTargetLostSignature_Parms, LastKnownData), Z_Construct_UScriptStruct_FLastKnownData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownData_MetaData), NewProp_LastKnownData_MetaData) }; // 106685465
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::NewProp_LastKnownData = { "LastKnownData", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_RibEye_eventKnowledgeComponentOnLastTargetLostSignature_Parms, LastKnownData), Z_Construct_UScriptStruct_FLastKnownData, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownData_MetaData), NewProp_LastKnownData_MetaData) }; // 1350844460
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::NewProp_Target,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature_Statics::NewProp_LastKnownData,
@@ -248,6 +242,66 @@ DEFINE_FUNCTION(UKnowledgeComponent::execGetSpottedActors)
 	P_NATIVE_END;
 }
 // End Class UKnowledgeComponent Function GetSpottedActors
+
+// Begin Class UKnowledgeComponent Function IsResolvedAllyNearby
+struct Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics
+{
+	struct KnowledgeComponent_eventIsResolvedAllyNearby_Parms
+	{
+		FVector Position;
+		EAlert MinAlertLevel;
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Group" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Position;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_MinAlertLevel_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_MinAlertLevel;
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_Position = { "Position", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(KnowledgeComponent_eventIsResolvedAllyNearby_Parms, Position), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_MinAlertLevel_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_MinAlertLevel = { "MinAlertLevel", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(KnowledgeComponent_eventIsResolvedAllyNearby_Parms, MinAlertLevel), Z_Construct_UEnum_RibEye_EAlert, METADATA_PARAMS(0, nullptr) }; // 3817312066
+void Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((KnowledgeComponent_eventIsResolvedAllyNearby_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(KnowledgeComponent_eventIsResolvedAllyNearby_Parms), &Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_Position,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_MinAlertLevel_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_MinAlertLevel,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UKnowledgeComponent, nullptr, "IsResolvedAllyNearby", nullptr, nullptr, Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::PropPointers), sizeof(Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::KnowledgeComponent_eventIsResolvedAllyNearby_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54820401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::Function_MetaDataParams), Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::KnowledgeComponent_eventIsResolvedAllyNearby_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UKnowledgeComponent::execIsResolvedAllyNearby)
+{
+	P_GET_STRUCT(FVector,Z_Param_Position);
+	P_GET_ENUM(EAlert,Z_Param_MinAlertLevel);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->IsResolvedAllyNearby(Z_Param_Position,EAlert(Z_Param_MinAlertLevel));
+	P_NATIVE_END;
+}
+// End Class UKnowledgeComponent Function IsResolvedAllyNearby
 
 // Begin Class UKnowledgeComponent Function OnEnemySpotted
 struct Z_Construct_UFunction_UKnowledgeComponent_OnEnemySpotted_Statics
@@ -351,6 +405,7 @@ void UKnowledgeComponent::StaticRegisterNativesUKnowledgeComponent()
 	UClass* Class = UKnowledgeComponent::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetSpottedActors", &UKnowledgeComponent::execGetSpottedActors },
+		{ "IsResolvedAllyNearby", &UKnowledgeComponent::execIsResolvedAllyNearby },
 		{ "OnEnemySpotted", &UKnowledgeComponent::execOnEnemySpotted },
 		{ "RegisterKnowledge", &UKnowledgeComponent::execRegisterKnowledge },
 	};
@@ -387,6 +442,7 @@ struct Z_Construct_UClass_UKnowledgeComponent_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UKnowledgeComponent_GetSpottedActors, "GetSpottedActors" }, // 1543638275
+		{ &Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby, "IsResolvedAllyNearby" }, // 3802631898
 		{ &Z_Construct_UFunction_UKnowledgeComponent_OnEnemySpotted, "OnEnemySpotted" }, // 36073326
 		{ &Z_Construct_UFunction_UKnowledgeComponent_RegisterKnowledge, "RegisterKnowledge" }, // 1440025783
 	};
@@ -397,7 +453,7 @@ struct Z_Construct_UClass_UKnowledgeComponent_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UKnowledgeComponent_Statics::NewProp_OnTargetSelected = { "OnTargetSelected", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UKnowledgeComponent, OnTargetSelected), Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnTargetSelectedSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnTargetSelected_MetaData), NewProp_OnTargetSelected_MetaData) }; // 2989310749
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UKnowledgeComponent_Statics::NewProp_OnLastTargetLost = { "OnLastTargetLost", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UKnowledgeComponent, OnLastTargetLost), Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnLastTargetLost_MetaData), NewProp_OnLastTargetLost_MetaData) }; // 3382785102
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UKnowledgeComponent_Statics::NewProp_OnLastTargetLost = { "OnLastTargetLost", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UKnowledgeComponent, OnLastTargetLost), Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnLastTargetLost_MetaData), NewProp_OnLastTargetLost_MetaData) }; // 1653339889
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UKnowledgeComponent_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UKnowledgeComponent_Statics::NewProp_OnTargetSelected,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UKnowledgeComponent_Statics::NewProp_OnLastTargetLost,
@@ -443,13 +499,13 @@ UKnowledgeComponent::~UKnowledgeComponent() {}
 struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
-		{ FLastKnownData::StaticStruct, Z_Construct_UScriptStruct_FLastKnownData_Statics::NewStructOps, TEXT("LastKnownData"), &Z_Registration_Info_UScriptStruct_LastKnownData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLastKnownData), 106685465U) },
+		{ FLastKnownData::StaticStruct, Z_Construct_UScriptStruct_FLastKnownData_Statics::NewStructOps, TEXT("LastKnownData"), &Z_Registration_Info_UScriptStruct_LastKnownData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLastKnownData), 1350844460U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UKnowledgeComponent, UKnowledgeComponent::StaticClass, TEXT("UKnowledgeComponent"), &Z_Registration_Info_UClass_UKnowledgeComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UKnowledgeComponent), 1735339716U) },
+		{ Z_Construct_UClass_UKnowledgeComponent, UKnowledgeComponent::StaticClass, TEXT("UKnowledgeComponent"), &Z_Registration_Info_UClass_UKnowledgeComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UKnowledgeComponent), 1559017374U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_1865060357(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_2049950922(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ScriptStructInfo),
 	nullptr, 0);

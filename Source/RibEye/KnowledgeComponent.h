@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Enums.h"
 #include "KnowledgeComponent.generated.h"
 
 USTRUCT(BlueprintType)
@@ -12,9 +13,6 @@ struct FLastKnownData
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(BlueprintReadWrite)
-	AActor* Owner;
-
 	UPROPERTY(BlueprintReadWrite)
 	FVector LastKnownPosition;
 	
@@ -28,6 +26,8 @@ public:
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FKnowledgeComponentOnTargetSelectedSignature, AActor*, Target);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FKnowledgeComponentOnLastTargetLostSignature, AActor*, Target, const FLastKnownData&, LastKnownData);
+
+class USocialComponent;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), Blueprintable, BlueprintType)
 class RIBEYE_API UKnowledgeComponent : public UActorComponent
@@ -44,6 +44,8 @@ protected:
 
 	TMap<AActor*, FLastKnownData> LastKnownData;
 	TArray<AActor*> SpottedEnemies;
+
+	USocialComponent* SComp;
 
 public:	
 	// Called every frame
@@ -63,4 +65,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Vision")
 	const TArray<AActor*>& GetSpottedActors() { return SpottedEnemies; }
+
+	UFUNCTION(BlueprintCallable, Category = "Group")
+	bool IsResolvedAllyNearby(FVector Position, EAlert MinAlertLevel) const;
 };

@@ -3,6 +3,7 @@
 
 #include "KnowledgeComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "SocialComponent.h"
 
 // Sets default values for this component's properties
 UKnowledgeComponent::UKnowledgeComponent()
@@ -21,7 +22,7 @@ void UKnowledgeComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+	SComp = GetOwner()->GetComponentByClass<USocialComponent>();
 }
 
 
@@ -72,4 +73,33 @@ void UKnowledgeComponent::RegisterKnowledge(AActor* Actor, FVector Position, FVe
 			OnLastTargetLost.Broadcast(Actor, *ActorsLND);
 		}
 	}
+}
+
+bool UKnowledgeComponent::IsResolvedAllyNearby(FVector Position, EAlert MinAlertLevel) const
+{
+	if (!IsValid(SComp))
+	{
+		return false;
+	}
+
+	float TimeToInclude = 10.f;
+	constexpr float DistanceToIncludeSq = FMath::Square(15000.f);
+	for (auto& State : LastKnownData)
+	{
+		// Check only that allies knowledge about which are fresh
+		if (State.Value.LastKnownTime + TimeToInclude > GetWorld()->GetTimeSeconds())
+		{
+			float DistanceSq = (State.Value.LastKnownPosition - 
+				Position).SquaredLength();
+			if ( DistanceSq < DistanceToIncludeSq )
+			{
+				if (SComp->IsAllyResolved(State.Key))
+				{
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
 }

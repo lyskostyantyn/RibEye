@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Enums.h"
-#include "KnowledgeComponent.h"
 #include "SocialComponent.generated.h"
 
 USTRUCT(BlueprintType)
@@ -64,6 +63,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSocialComponentOnAlertnessChangedSi
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSocialComponentOnAllyChangedStateSignature, AActor*, Ally, EAlert, AlertState);
 
+class UKnowledgeComponent;
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), Blueprintable, BlueprintType )
 class RIBEYE_API USocialComponent : public UActorComponent
 {
@@ -74,6 +75,8 @@ public:
 	USocialComponent();
 
 protected:
+	static FAllyKnownState EMPTY_ALL;
+
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
@@ -85,8 +88,7 @@ protected:
 	// used for personal resolve
 	bool UpdateAllyKnownState_Internal(AActor* Ally, EAlert AllyAlertState, bool IsKnowledgeResolved = false);
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AllyGroup")
-	TMap<EGroupType, FAllyGroup> CurrentKnownGroups;
+	TMap<EGroupType, TArray<AActor*>> CurrentKnownGroups;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Faction")
 	int Faction;
@@ -154,15 +156,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	int GetSocialGroupSize() const;
 
-	UFUNCTION(BlueprintCallable, Category = "State")
-	void SetupID();
-
-	UFUNCTION(BlueprintCallable, Category = "State")
-	int GetID() const;
-
-	UFUNCTION(BlueprintCallable, Category = "State")
-	FString GetTextID() const;
-
 	UFUNCTION(BlueprintCallable, Category = "Faction")
 	bool IsAllyResolved(AActor* Ally) const;
 
@@ -172,6 +165,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Faction")
 	int GetFaction() const { return Faction; }
 
+	float GetStateForgetTime(EAlert State) const;
+
+	// DEBUG
+
 	UFUNCTION(BlueprintCallable, Category = "Debug")
 	FString GetDebugText() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	void SetupID();
+
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	int GetID() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	FString GetTextID() const;
 };

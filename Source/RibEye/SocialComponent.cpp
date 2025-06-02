@@ -4,6 +4,7 @@
 
 #include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
+#include "KnowledgeComponent.h"
 
 static int S_SOCIAL_ID_GENERATOR = 0;
 
@@ -63,38 +64,38 @@ void USocialComponent::AddActorToGroup(AActor* Actor, EGroupType Group)
 		return;
 	}
 
-	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
+	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
 		// TODO rewrite that
 		if (Actor != GetOwner() && Group == EGroupType::OWN)
 		{
-			CurrentKnownGroups.Add({ Group, FAllyGroup{TArray<AActor*>{GetOwner(), Actor}} });
+			CurrentKnownGroups.Add({ Group, TArray<AActor*>{GetOwner(), Actor} });
 		}
 		else
 		{
-			CurrentKnownGroups.Add({ Group, FAllyGroup{TArray<AActor*>{Actor}} });
+			CurrentKnownGroups.Add({ Group, TArray<AActor*>{Actor} });
 		}
 	}
 	else
 	{
-		GroupMembers->Actors.AddUnique(Actor);
+		GroupMembers->AddUnique(Actor);
 	}
 }
 
 void USocialComponent::RemoveActorFromGroup(AActor* Actor, EGroupType Group)
 {
-	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
+	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (GroupMembers)
 	{
-		GroupMembers->Actors.Remove(Actor);
+		GroupMembers->Remove(Actor);
 	}
 }
 
 const TArray<AActor*>& USocialComponent::GetGroupMembers(EGroupType Group)
 {
-	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
-	return GroupMembers ? GroupMembers->Actors : EMPTY_ACTOR_LIST;
+	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
+	return GroupMembers ? *GroupMembers : EMPTY_ACTOR_LIST;
 }
 
 void USocialComponent::ClearGroupMembers(EGroupType Group)
@@ -104,23 +105,23 @@ void USocialComponent::ClearGroupMembers(EGroupType Group)
 
 void USocialComponent::AddMembersToGroup(TArray<AActor*> Members, EGroupType Group, bool Override/* = false*/)
 {
-	FAllyGroup* GroupMembers = CurrentKnownGroups.Find(Group);
+	TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(Group);
 	if (!GroupMembers)
 	{
-		CurrentKnownGroups.Add({ Group, FAllyGroup{Members} });
+		CurrentKnownGroups.Add({ Group, Members });
 	}
 	else
 	{
 		if (Override)
 		{
-			GroupMembers->Actors.Empty();
+			GroupMembers->Empty();
 		}
 
 		for (auto& Member : Members)
 		{
 			if (IsValid(Member))
 			{
-				GroupMembers->Actors.AddUnique(Member);
+				GroupMembers->AddUnique(Member);
 			}		
 		}
 	}
@@ -157,8 +158,8 @@ int USocialComponent::GetMyGroupNumber() const
 
 TArray<AActor*> USocialComponent::GetMySocialGroup() const
 {
-	const FAllyGroup* GroupMembers = CurrentKnownGroups.Find(EGroupType::OWN);
-	return GroupMembers ? GroupMembers->Actors : TArray<AActor*>{GetOwner()};
+	const TArray<AActor*>* GroupMembers = CurrentKnownGroups.Find(EGroupType::OWN);
+	return GroupMembers ? *GroupMembers : TArray<AActor*>{GetOwner()};
 }
 
 int USocialComponent::GetSocialGroupSize() const
@@ -245,7 +246,8 @@ bool USocialComponent::UpdateAllyKnownState_Internal(AActor* Ally, EAlert AllyAl
 	else
 	{
 		// we already forgot about Ally, consider we met them again
-		if ( GetWorld()->GetTimeSeconds() > State->LastKnownTime + StateForgetTime )
+		if ( GetWorld()->GetTimeSeconds() > State->LastKnownTime + 
+			GetStateForgetTime(State->AlertState))
 		{
 			State->KnowledgeResolved = IsKnowledgeResolved;
 			StateChanged = true;
@@ -311,12 +313,17 @@ bool USocialComponent::ShouldIgnoreADialogueType(EIgnoreDialogueType IgnoreType)
 bool USocialComponent::IsAllyResolved(AActor* Ally) const
 {
 	const FAllyKnownState* State = AllyKnownStates.Find(Ally);
-	if (!State || (GetWorld()->GetTimeSeconds() > State->LastKnownTime + StateForgetTime))
+	if (!State || (GetWorld()->GetTimeSeconds() > GetStateForgetTime(State->AlertState)))
 	{
 		return false;
 	}
 
 	return State->KnowledgeResolved;
+}
+
+float USocialComponent::GetStateForgetTime(EAlert State) const
+{
+	return StateForgetTime;
 }
 
 FString USocialComponent::GetDebugText() const

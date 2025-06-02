@@ -18,50 +18,50 @@ enum class ELineType : uint8;
 #endif
 #define RIBEYE_SocialComponent_generated_h
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_14_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_13_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FSocialSettings_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FSocialSettings>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_30_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_29_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FAllyGroupInfo_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyGroupInfo>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_40_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_39_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FAllyKnownState_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyKnownState>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_56_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_55_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FAllyGroup_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FAllyGroup>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_63_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_62_DELEGATE \
 RIBEYE_API void FSocialComponentOnAlertnessChangedSignature_DelegateWrapper(const FMulticastScriptDelegate& SocialComponentOnAlertnessChangedSignature, EAlert AlertState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_65_DELEGATE \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_64_DELEGATE \
 RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(const FMulticastScriptDelegate& SocialComponentOnAllyChangedStateSignature, AActor* Ally, EAlert AlertState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetTextID); \
+	DECLARE_FUNCTION(execGetID); \
+	DECLARE_FUNCTION(execSetupID); \
 	DECLARE_FUNCTION(execGetDebugText); \
 	DECLARE_FUNCTION(execGetFaction); \
 	DECLARE_FUNCTION(execShouldIgnoreAnsweringLineType); \
 	DECLARE_FUNCTION(execIsAllyResolved); \
-	DECLARE_FUNCTION(execGetTextID); \
-	DECLARE_FUNCTION(execGetID); \
-	DECLARE_FUNCTION(execSetupID); \
 	DECLARE_FUNCTION(execGetSocialGroupSize); \
 	DECLARE_FUNCTION(execGetMySocialGroup); \
 	DECLARE_FUNCTION(execGetMyGroupNumber); \
@@ -76,7 +76,7 @@ RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(cons
 	DECLARE_FUNCTION(execUpdateAllyKnownState);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_INCLASS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUSocialComponent(); \
 	friend struct Z_Construct_UClass_USocialComponent_Statics; \
@@ -85,7 +85,7 @@ public: \
 	DECLARE_SERIALIZER(USocialComponent)
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_ENHANCED_CONSTRUCTORS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	USocialComponent(USocialComponent&&); \
@@ -97,13 +97,13 @@ public: \
 	NO_API virtual ~USocialComponent();
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_67_PROLOG
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_68_PROLOG
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_INCLASS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_70_ENHANCED_CONSTRUCTORS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_INCLASS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_71_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
