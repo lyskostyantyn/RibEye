@@ -82,7 +82,7 @@ bool UKnowledgeComponent::IsResolvedAllyNearby(FVector Position, EAlert MinAlert
 		return false;
 	}
 
-	float TimeToInclude = 10.f;
+	float TimeToInclude = 20.f;
 	constexpr float DistanceToIncludeSq = FMath::Square(15000.f);
 	for (auto& State : LastKnownData)
 	{
