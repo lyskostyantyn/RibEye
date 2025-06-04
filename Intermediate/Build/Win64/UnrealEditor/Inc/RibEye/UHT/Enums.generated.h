@@ -57,6 +57,7 @@ template<> RIBEYE_API UEnum* StaticEnum<EVoicePreset>();
 
 #define FOREACH_ENUM_EBARKTYPE(op) \
 	op(EBarkType::SURPRISED) \
+	op(EBarkType::INV_INFORM) \
 	op(EBarkType::BARK_NUM) 
 
 enum class EBarkType : uint8;

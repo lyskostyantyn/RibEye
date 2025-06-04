@@ -35,3 +35,5 @@ COM_INV_S2_ASK_S_J_C	1		1	5.0		I guess he didn't hear, let check him then
 COM_INV_S2_ASK_S_J_D	1		1	5.0		I guess he is fine to investigate himself 
 COM_INV_S2_ASK_M_J	1		1	5.0		If you want I can join instead
 COM_GRE_IGN		1		1	5.0		That dude just ignored you
+INV_NOTIFY		1		1	5.0		I heard, I'll handle that
+INV_NOTIFY_MULT		2		1	5.0		Have you heard that too? Let's check that position

@@ -41,6 +41,7 @@ UENUM(BlueprintType)
 enum class EBarkType : uint8
 {
 	SURPRISED UMETA(DisplayName = "Suprised"),
+	INV_INFORM UMETA(DisplayName = "Inform about investigating"),
 	BARK_NUM
 };
 
@@ -51,7 +52,7 @@ enum class ELineType : uint8
 	GREETING UMETA(DisplayName = "Greeting"),
 	GREETING_REPLY UMETA(DisplayName = "Greeting reply"),
 	GREETING_END UMETA(DisplayName = "Greeting end"),
-	SURPRISE UMETA(DisplayName = "Surprise"),
+	SURPRISE UMETA(DisplayName = "Surprise"), // bark type
 
 	// INVESTIGATE 1 VS 1
 	INVESTIGATION_MAIN UMETA(DisplayName = "Invite to investigation"),
