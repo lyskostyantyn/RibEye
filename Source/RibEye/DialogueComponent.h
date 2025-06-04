@@ -161,6 +161,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Dialogue")
 	void OnLeftPendingDialogue(int DialogueID);
 
-	UFUNCTION(BlueprintImplementableEvent, Category = "Dialogue")
-	void OnPlayBark(AActor* Instigator, EBarkType BarkType);
+	UFUNCTION(BlueprintImplementableEvent, Category = "Dialogue", meta = (ForceAsFunction))
+	bool OnPlayBark(const FVector& EmiterPos, EBarkType BarkType);
 };

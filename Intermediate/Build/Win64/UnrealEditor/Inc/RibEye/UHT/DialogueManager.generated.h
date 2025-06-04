@@ -122,14 +122,14 @@ template<> RIBEYE_API UScriptStruct* StaticStruct<struct FBarkSpeakerData>();
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FBarkGenericData>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_228_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_231_GENERATED_BODY \
 	friend struct Z_Construct_UScriptStruct_FRules_Statics; \
 	RIBEYE_API static class UScriptStruct* StaticStruct();
 
 
 template<> RIBEYE_API UScriptStruct* StaticStruct<struct FRules>();
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execGetLineTypePriority); \
 	DECLARE_FUNCTION(execGetLinePlayInfo); \
 	DECLARE_FUNCTION(execGetLineMasteryType); \
@@ -157,7 +157,7 @@ template<> RIBEYE_API UScriptStruct* StaticStruct<struct FRules>();
 	DECLARE_FUNCTION(execMakeADialogue);
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_INCLASS_NO_PURE_DECLS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUDialogueManager(); \
 	friend struct Z_Construct_UClass_UDialogueManager_Statics; \
@@ -166,7 +166,7 @@ public: \
 	DECLARE_SERIALIZER(UDialogueManager)
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_ENHANCED_CONSTRUCTORS \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UDialogueManager(UDialogueManager&&); \
@@ -178,13 +178,13 @@ public: \
 	NO_API virtual ~UDialogueManager();
 
 
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_239_PROLOG
-#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_GENERATED_BODY \
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_PROLOG
+#define FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_INCLASS_NO_PURE_DECLS \
-	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_242_ENHANCED_CONSTRUCTORS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_INCLASS_NO_PURE_DECLS \
+	FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_245_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

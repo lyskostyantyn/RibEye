@@ -103,3 +103,52 @@ bool UKnowledgeComponent::IsResolvedAllyNearby(FVector Position, EAlert MinAlert
 
 	return false;
 }
+
+void UKnowledgeComponent::RegisterSound(const FVector& EmiterPos, bool IsResolved/* = false*/)
+{
+	constexpr float BarkDistance = FMath::Square(5000.0f);
+	for (auto& Sound : LastKnownSoundPosition)
+	{
+		// assume that is the same source
+		if ((EmiterPos - Sound.LastKnownPosition).SquaredLength() < BarkDistance)
+		{
+			Sound.LastKnownTime = GetWorld()->GetTimeSeconds();
+			return;
+		}
+	}
+
+	LastKnownSoundPosition.Add(FLastKnownSoundPosition{ EmiterPos, 
+		static_cast<float>(GetWorld()->GetTimeSeconds()), IsResolved });
+}
+
+void UKnowledgeComponent::ResolveSound(const FVector& AllyPos)
+{
+	constexpr float ResolveDistance = FMath::Square(20000.0f);
+	for (auto& Sound : LastKnownSoundPosition)
+	{
+		// assume that is the same source
+		if ((AllyPos - Sound.LastKnownPosition).SquaredLength() < ResolveDistance)
+		{
+			Sound.LastKnownTime = GetWorld()->GetTimeSeconds();
+			Sound.Resolved = true;
+		}
+	}
+}
+
+bool UKnowledgeComponent::IsSoundResolved(const FVector& EmiterPos) const
+{
+	constexpr float BarkDistance = FMath::Square(5000.0f);
+	constexpr float BarkHeardRecentlyTime = 5.0f;
+	for (auto& Sound : LastKnownSoundPosition)
+	{
+		// assume that is the same source
+		if (Sound.Resolved 
+		  && 
+		(Sound.LastKnownTime + BarkHeardRecentlyTime > GetWorld()->GetTimeSeconds()) && 
+		(EmiterPos - Sound.LastKnownPosition).SquaredLength() < BarkDistance)
+		{
+			return true;
+		}
+	}
+	return false;
+}

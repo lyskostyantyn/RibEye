@@ -216,6 +216,9 @@ struct FBarkGenericData
 
 public:
 	UPROPERTY(BlueprintReadWrite)
+	FVector EmiterPosition;
+
+	UPROPERTY(BlueprintReadWrite)
 	float BarkReleaseTime;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -251,7 +254,6 @@ protected:
 
 	void SendOnReplyRequested(AActor* Actor, int DialogueID) const;
 	void SendOnDialogueEnded(AActor* Actor, int DialogueID) const;
-	void SendOnPlayBark(AActor* Instigator, TArray<FBarkSpeakerData>& Speakers);
 	void ValidateDialogues();
 	void ValidateBarks();
 	void EndDialogue(int DialogueID, const FDialogueData& Data);
@@ -290,7 +292,7 @@ protected:
 	TMap<FString, FLineTypeInfo> LineTypesMap;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Transient, Category = "Dialogue")
-	TMap<AActor*, FBarkGenericData> BarkEmiterData;
+	TArray<FBarkGenericData> BarkEmiterData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Transient, Category = "Dialogue")
 	TMap<ELineType, EAlert> LineTypePriority;
@@ -304,18 +306,21 @@ public:
 	int MakeADialogue(FDialogueLine DialogueLine);
 
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
-	void MakeABark(AActor* Source, FBarkSpeakerData SpeakerData);
+	void MakeABark(const FVector& SoundPosition, FBarkSpeakerData SpeakerData);
 
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
 	bool ContinueDialogue(int DialogueID, FDialogueLine DialogueLine);
 
+	// not used if barkType is PLAY_WITH_DELAY
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
 	void ContinueBark(AActor* Speaker);
 
+	// shouldn't be used at all actually
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
-	void RefuseToBark(AActor* Speaker, AActor* Reason);
+	void RefuseToBark(AActor* Speaker, const FVector& EmitterPos);
 
-	void ProcessBark(AActor* BarkKey, FBarkGenericData& BarkData);
+	//return true if we sent process and wait for a reaction
+	bool ProcessBark(FBarkGenericData& BarkData);
 
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
 	void RemoveActorFromDialogue(int DialogueID, AActor* Actor);

@@ -11,6 +11,7 @@ void EmptyLinkFunctionForGeneratedCodeDialogueManager() {}
 
 // Begin Cross Module References
 AIMODULE_API UClass* Z_Construct_UClass_UAIPerceptionComponent_NoRegister();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 RIBEYE_API UClass* Z_Construct_UClass_UDialogueManager();
@@ -1060,6 +1061,10 @@ struct Z_Construct_UScriptStruct_FBarkGenericData_Statics
 		{ "BlueprintType", "true" },
 		{ "ModuleRelativePath", "DialogueManager.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EmiterPosition_MetaData[] = {
+		{ "Category", "BarkGenericData" },
+		{ "ModuleRelativePath", "DialogueManager.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BarkReleaseTime_MetaData[] = {
 		{ "Category", "BarkGenericData" },
 		{ "ModuleRelativePath", "DialogueManager.h" },
@@ -1069,6 +1074,7 @@ struct Z_Construct_UScriptStruct_FBarkGenericData_Statics
 		{ "ModuleRelativePath", "DialogueManager.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_EmiterPosition;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_BarkReleaseTime;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Speakers_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_Speakers;
@@ -1079,10 +1085,12 @@ struct Z_Construct_UScriptStruct_FBarkGenericData_Statics
 	}
 	static const UECodeGen_Private::FStructParams StructParams;
 };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_EmiterPosition = { "EmiterPosition", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FBarkGenericData, EmiterPosition), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmiterPosition_MetaData), NewProp_EmiterPosition_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_BarkReleaseTime = { "BarkReleaseTime", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FBarkGenericData, BarkReleaseTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BarkReleaseTime_MetaData), NewProp_BarkReleaseTime_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_Speakers_Inner = { "Speakers", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FBarkSpeakerData, METADATA_PARAMS(0, nullptr) }; // 3937108159
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_Speakers = { "Speakers", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FBarkGenericData, Speakers), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Speakers_MetaData), NewProp_Speakers_MetaData) }; // 3937108159
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FBarkGenericData_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_EmiterPosition,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_BarkReleaseTime,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_Speakers_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewProp_Speakers,
@@ -1312,7 +1320,13 @@ struct Z_Construct_UFunction_UDialogueManager_ContinueBark_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Dialogue" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// not used if barkType is PLAY_WITH_DELAY\n" },
+#endif
 		{ "ModuleRelativePath", "DialogueManager.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "not used if barkType is PLAY_WITH_DELAY" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Speaker;
@@ -2238,7 +2252,7 @@ struct Z_Construct_UFunction_UDialogueManager_MakeABark_Statics
 {
 	struct DialogueManager_eventMakeABark_Parms
 	{
-		AActor* Source;
+		FVector SoundPosition;
 		FBarkSpeakerData SpeakerData;
 	};
 #if WITH_METADATA
@@ -2246,20 +2260,23 @@ struct Z_Construct_UFunction_UDialogueManager_MakeABark_Statics
 		{ "Category", "Dialogue" },
 		{ "ModuleRelativePath", "DialogueManager.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SoundPosition_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Source;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_SoundPosition;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_SpeakerData;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_Source = { "Source", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventMakeABark_Parms, Source), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_SoundPosition = { "SoundPosition", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventMakeABark_Parms, SoundPosition), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SoundPosition_MetaData), NewProp_SoundPosition_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_SpeakerData = { "SpeakerData", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventMakeABark_Parms, SpeakerData), Z_Construct_UScriptStruct_FBarkSpeakerData, METADATA_PARAMS(0, nullptr) }; // 3937108159
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_Source,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_SoundPosition,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::NewProp_SpeakerData,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueManager, nullptr, "MakeABark", nullptr, nullptr, Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers), sizeof(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::DialogueManager_eventMakeABark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueManager, nullptr, "MakeABark", nullptr, nullptr, Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::PropPointers), sizeof(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::DialogueManager_eventMakeABark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::Function_MetaDataParams) };
 static_assert(sizeof(Z_Construct_UFunction_UDialogueManager_MakeABark_Statics::DialogueManager_eventMakeABark_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UDialogueManager_MakeABark()
 {
@@ -2272,11 +2289,11 @@ UFunction* Z_Construct_UFunction_UDialogueManager_MakeABark()
 }
 DEFINE_FUNCTION(UDialogueManager::execMakeABark)
 {
-	P_GET_OBJECT(AActor,Z_Param_Source);
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_SoundPosition);
 	P_GET_STRUCT(FBarkSpeakerData,Z_Param_SpeakerData);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->MakeABark(Z_Param_Source,Z_Param_SpeakerData);
+	P_THIS->MakeABark(Z_Param_Out_SoundPosition,Z_Param_SpeakerData);
 	P_NATIVE_END;
 }
 // End Class UDialogueManager Function MakeABark
@@ -2377,27 +2394,36 @@ struct Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics
 	struct DialogueManager_eventRefuseToBark_Parms
 	{
 		AActor* Speaker;
-		AActor* Reason;
+		FVector EmitterPos;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Dialogue" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// shouldn't be used at all actually\n" },
+#endif
 		{ "ModuleRelativePath", "DialogueManager.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "shouldn't be used at all actually" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EmitterPos_MetaData[] = {
+		{ "NativeConst", "" },
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Speaker;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Reason;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_EmitterPos;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_Speaker = { "Speaker", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventRefuseToBark_Parms, Speaker), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_Reason = { "Reason", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventRefuseToBark_Parms, Reason), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_EmitterPos = { "EmitterPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueManager_eventRefuseToBark_Parms, EmitterPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmitterPos_MetaData), NewProp_EmitterPos_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_Speaker,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_Reason,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::NewProp_EmitterPos,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueManager, nullptr, "RefuseToBark", nullptr, nullptr, Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers), sizeof(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::DialogueManager_eventRefuseToBark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueManager, nullptr, "RefuseToBark", nullptr, nullptr, Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::PropPointers), sizeof(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::DialogueManager_eventRefuseToBark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::Function_MetaDataParams) };
 static_assert(sizeof(Z_Construct_UFunction_UDialogueManager_RefuseToBark_Statics::DialogueManager_eventRefuseToBark_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UDialogueManager_RefuseToBark()
 {
@@ -2411,10 +2437,10 @@ UFunction* Z_Construct_UFunction_UDialogueManager_RefuseToBark()
 DEFINE_FUNCTION(UDialogueManager::execRefuseToBark)
 {
 	P_GET_OBJECT(AActor,Z_Param_Speaker);
-	P_GET_OBJECT(AActor,Z_Param_Reason);
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_EmitterPos);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->RefuseToBark(Z_Param_Speaker,Z_Param_Reason);
+	P_THIS->RefuseToBark(Z_Param_Speaker,Z_Param_Out_EmitterPos);
 	P_NATIVE_END;
 }
 // End Class UDialogueManager Function RefuseToBark
@@ -2641,9 +2667,8 @@ struct Z_Construct_UClass_UDialogueManager_Statics
 	static const UECodeGen_Private::FStructPropertyParams NewProp_LineTypesMap_ValueProp;
 	static const UECodeGen_Private::FStrPropertyParams NewProp_LineTypesMap_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_LineTypesMap;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_BarkEmiterData_ValueProp;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_BarkEmiterData_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_BarkEmiterData;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_BarkEmiterData_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_BarkEmiterData;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_LineTypePriority_ValueProp_Underlying;
 	static const UECodeGen_Private::FEnumPropertyParams NewProp_LineTypePriority_ValueProp;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_LineTypePriority_Key_KeyProp_Underlying;
@@ -2654,7 +2679,7 @@ struct Z_Construct_UClass_UDialogueManager_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UDialogueManager_AddToListeners, "AddToListeners" }, // 77998876
 		{ &Z_Construct_UFunction_UDialogueManager_AddToPendingParticipants, "AddToPendingParticipants" }, // 259900345
-		{ &Z_Construct_UFunction_UDialogueManager_ContinueBark, "ContinueBark" }, // 1874736142
+		{ &Z_Construct_UFunction_UDialogueManager_ContinueBark, "ContinueBark" }, // 1818309752
 		{ &Z_Construct_UFunction_UDialogueManager_ContinueDialogue, "ContinueDialogue" }, // 906453419
 		{ &Z_Construct_UFunction_UDialogueManager_FindActiveDialogueOfActor, "FindActiveDialogueOfActor" }, // 1705278406
 		{ &Z_Construct_UFunction_UDialogueManager_GetAllyGroupList, "GetAllyGroupList" }, // 1102211902
@@ -2671,10 +2696,10 @@ struct Z_Construct_UClass_UDialogueManager_Statics
 		{ &Z_Construct_UFunction_UDialogueManager_IsAMemberOfADialogue, "IsAMemberOfADialogue" }, // 3237935724
 		{ &Z_Construct_UFunction_UDialogueManager_IsDialogueValid, "IsDialogueValid" }, // 2005614525
 		{ &Z_Construct_UFunction_UDialogueManager_IsMainPartEnded, "IsMainPartEnded" }, // 1607104688
-		{ &Z_Construct_UFunction_UDialogueManager_MakeABark, "MakeABark" }, // 3057649873
+		{ &Z_Construct_UFunction_UDialogueManager_MakeABark, "MakeABark" }, // 447285460
 		{ &Z_Construct_UFunction_UDialogueManager_MakeADialogue, "MakeADialogue" }, // 1184491833
 		{ &Z_Construct_UFunction_UDialogueManager_OnMainPartEnded, "OnMainPartEnded" }, // 873971921
-		{ &Z_Construct_UFunction_UDialogueManager_RefuseToBark, "RefuseToBark" }, // 656473488
+		{ &Z_Construct_UFunction_UDialogueManager_RefuseToBark, "RefuseToBark" }, // 527526661
 		{ &Z_Construct_UFunction_UDialogueManager_RemoveActorFromDialogue, "RemoveActorFromDialogue" }, // 2142558307
 		{ &Z_Construct_UFunction_UDialogueManager_RemoveFromPendingParticipants, "RemoveFromPendingParticipants" }, // 3430838081
 	};
@@ -2696,9 +2721,8 @@ const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UDialogueManage
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap_ValueProp = { "LineTypesMap", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FLineTypeInfo, METADATA_PARAMS(0, nullptr) }; // 3690838219
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap_Key_KeyProp = { "LineTypesMap_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap = { "LineTypesMap", nullptr, (EPropertyFlags)0x0020080000002015, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UDialogueManager, LineTypesMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LineTypesMap_MetaData), NewProp_LineTypesMap_MetaData) }; // 3690838219
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_ValueProp = { "BarkEmiterData", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FBarkGenericData, METADATA_PARAMS(0, nullptr) }; // 2967135688
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_Key_KeyProp = { "BarkEmiterData_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData = { "BarkEmiterData", nullptr, (EPropertyFlags)0x0020080000002015, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UDialogueManager, BarkEmiterData), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BarkEmiterData_MetaData), NewProp_BarkEmiterData_MetaData) }; // 2967135688
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_Inner = { "BarkEmiterData", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FBarkGenericData, METADATA_PARAMS(0, nullptr) }; // 3996373188
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData = { "BarkEmiterData", nullptr, (EPropertyFlags)0x0020080000002015, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UDialogueManager, BarkEmiterData), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BarkEmiterData_MetaData), NewProp_BarkEmiterData_MetaData) }; // 3996373188
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypePriority_ValueProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypePriority_ValueProp = { "LineTypePriority", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UEnum_RibEye_EAlert, METADATA_PARAMS(0, nullptr) }; // 3817312066
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypePriority_Key_KeyProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
@@ -2717,8 +2741,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UDialogue
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypesMap,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_BarkEmiterData,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypePriority_ValueProp_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UDialogueManager_Statics::NewProp_LineTypePriority_ValueProp,
@@ -2780,14 +2803,14 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ FPendingActorPriorityMap::StaticStruct, Z_Construct_UScriptStruct_FPendingActorPriorityMap_Statics::NewStructOps, TEXT("PendingActorPriorityMap"), &Z_Registration_Info_UScriptStruct_PendingActorPriorityMap, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FPendingActorPriorityMap), 644960532U) },
 		{ FDialogueData::StaticStruct, Z_Construct_UScriptStruct_FDialogueData_Statics::NewStructOps, TEXT("DialogueData"), &Z_Registration_Info_UScriptStruct_DialogueData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FDialogueData), 3021039114U) },
 		{ FBarkSpeakerData::StaticStruct, Z_Construct_UScriptStruct_FBarkSpeakerData_Statics::NewStructOps, TEXT("BarkSpeakerData"), &Z_Registration_Info_UScriptStruct_BarkSpeakerData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FBarkSpeakerData), 3937108159U) },
-		{ FBarkGenericData::StaticStruct, Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewStructOps, TEXT("BarkGenericData"), &Z_Registration_Info_UScriptStruct_BarkGenericData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FBarkGenericData), 2967135688U) },
+		{ FBarkGenericData::StaticStruct, Z_Construct_UScriptStruct_FBarkGenericData_Statics::NewStructOps, TEXT("BarkGenericData"), &Z_Registration_Info_UScriptStruct_BarkGenericData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FBarkGenericData), 3996373188U) },
 		{ FRules::StaticStruct, Z_Construct_UScriptStruct_FRules_Statics::NewStructOps, TEXT("Rules"), &Z_Registration_Info_UScriptStruct_Rules, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRules), 392102986U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UDialogueManager, UDialogueManager::StaticClass, TEXT("UDialogueManager"), &Z_Registration_Info_UClass_UDialogueManager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueManager), 2438536519U) },
+		{ Z_Construct_UClass_UDialogueManager, UDialogueManager::StaticClass, TEXT("UDialogueManager"), &Z_Registration_Info_UClass_UDialogueManager, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueManager), 4050981457U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_2488435970(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_3977750823(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueManager_h_Statics::ScriptStructInfo),
 	nullptr, 0);

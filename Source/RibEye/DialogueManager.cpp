@@ -215,36 +215,6 @@ void UDialogueManager::SendOnDialogueEnded(AActor* Actor, int DialogueID) const
 	}
 }
 
-void UDialogueManager::SendOnPlayBark(AActor* Instigator, TArray<FBarkSpeakerData>& Speakers)
-{
-	float BestScore = Speakers[0].Priority;
-	int BestIndex = 0;
-	for (int Index = 1; Index < Speakers.Num(); ++Index)
-	{
-		if (Speakers[Index].Priority > BestScore)
-		{
-			BestScore = Speakers[Index].Priority;
-			BestIndex = Index;
-		}
-	}
-
-	if (IsValid(Speakers[BestIndex].Actor))
-	{
-		UDialogueComponent* Comp = Speakers[BestIndex].Actor->GetComponentByClass<UDialogueComponent>();
-		if (IsValid(Comp))
-		{
-			EBarkType BarkType = Speakers[BestIndex].BarkType;
-			// only if we play with delay remove current speaker
-			if (ManagerRules.BarkRule == EBarkPlayingRule::PLAY_WITH_DELAY)
-			{
-				Speakers.RemoveAtSwap(BestIndex);
-			}
-
-			Comp->OnPlayBark(Instigator, BarkType);
-		}
-	}
-}
-
 void UDialogueManager::EndDialogue(int DialogueID, const FDialogueData& Data)
 {
 	auto ParticipantsCopy = Data.Participants;
@@ -318,9 +288,9 @@ void UDialogueManager::ValidateDialogues()
 
 void UDialogueManager::ValidateBarks()
 {
-	for (auto& Bark : BarkEmiterData)
+	for (TArray<FBarkGenericData>::TIterator It = BarkEmiterData.CreateIterator(); It; ++It)
 	{
-		FBarkGenericData& BarkData = Bark.Value;
+		FBarkGenericData& BarkData = *It;
 		if (GetWorld()->GetTimeSeconds() > BarkData.BarkReleaseTime)
 		{
 			if (ManagerRules.BarkRule == EBarkPlayingRule::PLAY_IN_ORDER)
@@ -337,19 +307,23 @@ void UDialogueManager::ValidateBarks()
 				BarkData.BarkReleaseTime = INFINITY;
 			}
 
-			ProcessBark(Bark.Key, BarkData);
-
-			if (ManagerRules.BarkRule == EBarkPlayingRule::PLAY_CLOSEST_ONLY)
-			{
-				BarkEmiterData.Remove(Bark.Key);
-			}
+			bool bFoundReplier = ProcessBark(BarkData);
 
 			if (ManagerRules.BarkRule == EBarkPlayingRule::PLAY_WITH_DELAY)
 			{
 				BarkData.BarkReleaseTime += ManagerRules.BarkDelayTime;
 			}
 
-			break;
+			if (!bFoundReplier || ManagerRules.BarkRule == EBarkPlayingRule::PLAY_CLOSEST_ONLY)
+			{
+				It.RemoveCurrentSwap();
+
+				if (BarkEmiterData.IsEmpty() && IsValid(PerceptionHelper))
+				{
+					PerceptionHelper->UnregisterComponent();
+				}
+				break;
+			}
 		}
 	}
 }
@@ -458,15 +432,21 @@ int UDialogueManager::MakeADialogue(FDialogueLine DialogueLine)
 	return DialogueID;
 }
 
-void UDialogueManager::MakeABark(AActor* Source, FBarkSpeakerData SpeakerData)
+void UDialogueManager::MakeABark(const FVector& SoundPosition, FBarkSpeakerData SpeakerData)
 {
-	FBarkGenericData* BarkData = BarkEmiterData.Find(Source);
-	if (!BarkData)
+	constexpr float BarkDistSq = FMath::Square(5000.f);
+
+	for (auto& BarkData : BarkEmiterData)
 	{
-		BarkData = &(BarkEmiterData.Add(Source, {static_cast<float>(GetWorld()->GetTimeSeconds() + BarkReleaseTime), {}}));
+		if ((BarkData.EmiterPosition - SoundPosition).SquaredLength() < BarkDistSq)
+		{
+			BarkData.EmiterPosition = SoundPosition;
+			BarkData.Speakers.Add(SpeakerData);
+			return;
+		}
 	}
 
-	BarkData->Speakers.Add(SpeakerData);
+	BarkEmiterData.Add({SoundPosition, static_cast<float>(GetWorld()->GetTimeSeconds() + BarkReleaseTime), {SpeakerData}});
 }
 
 bool UDialogueManager::ContinueDialogue(int DialogueID, FDialogueLine DialogueLine)
@@ -525,65 +505,101 @@ bool UDialogueManager::ContinueDialogue(int DialogueID, FDialogueLine DialogueLi
 
 void UDialogueManager::ContinueBark(AActor* Speaker)
 {
-	for (auto& Bark : BarkEmiterData)
+	for (TArray<FBarkGenericData>::TIterator It = BarkEmiterData.CreateIterator(); It; ++It)
 	{
-		FBarkGenericData& BarkData = Bark.Value;
+		FBarkGenericData& BarkData = *It;
 		for (int Index = 0; Index < BarkData.Speakers.Num(); ++Index)
 		{
 			if (BarkData.Speakers[Index].Actor == Speaker)
 			{
 				//remove current speaker
 				BarkData.Speakers.RemoveAtSwap(Index);
-				ProcessBark(Bark.Key, BarkData);
+				if (!ProcessBark(BarkData))
+				{
+					It.RemoveCurrentSwap();
+				}
 				return;
 			}
 		}
 	}
 }
 
-void UDialogueManager::RefuseToBark(AActor* Speaker, AActor* Reason)
+void UDialogueManager::RefuseToBark(AActor* Speaker, const FVector& EmitterPos)
 {
-	FBarkGenericData* BarkData = BarkEmiterData.Find(Reason);
-	if (!BarkData)
-	{
-		return;
-	}
+	constexpr float BarkDistSq = FMath::Square(5000.f);
 
-	if (ManagerRules.BarkRule != EBarkPlayingRule::PLAY_WITH_DELAY)
+	for (TArray<FBarkGenericData>::TIterator It = BarkEmiterData.CreateIterator(); It; ++It)
 	{
-		for (int Index = 0; Index < BarkData->Speakers.Num(); ++Index)
+		FBarkGenericData& BarkData = *It;
+		if ((BarkData.EmiterPosition - EmitterPos).SquaredLength() < BarkDistSq)
 		{
-			if (BarkData->Speakers[Index].Actor == Speaker)
+			if (ManagerRules.BarkRule != EBarkPlayingRule::PLAY_WITH_DELAY)
 			{
-				//remove current speaker
-				BarkData->Speakers.RemoveAtSwap(Index);
-				break;
+				for (int Index = 0; Index < BarkData.Speakers.Num(); ++Index)
+				{
+					if (BarkData.Speakers[Index].Actor == Speaker)
+					{
+						//remove current speaker
+						BarkData.Speakers.RemoveAtSwap(Index);
+						break;
+					}
+				}
+			}
+			else
+			{
+				BarkData.BarkReleaseTime = GetWorld()->GetTimeSeconds() + ManagerRules.BarkDelayTime;
+			}
+
+			if (!ProcessBark(BarkData))
+			{
+				It.RemoveCurrentSwap();
+			}		
+
+			return;
+		}
+	}
+}
+
+bool UDialogueManager::ProcessBark(FBarkGenericData& BarkData)
+{
+	while (!BarkData.Speakers.IsEmpty())
+	{
+		float BestScore = BarkData.Speakers[0].Priority;
+		int BestIndex = 0;
+		for (int Index = 1; Index < BarkData.Speakers.Num(); ++Index)
+		{
+			if (BarkData.Speakers[Index].Priority > BestScore)
+			{
+				BestScore = BarkData.Speakers[Index].Priority;
+				BestIndex = Index;
+			}
+		}
+
+		if (IsValid(BarkData.Speakers[BestIndex].Actor))
+		{
+			UDialogueComponent* Comp = BarkData.Speakers[BestIndex].Actor->GetComponentByClass<UDialogueComponent>();
+			if (IsValid(Comp))
+			{
+				EBarkType BarkType = BarkData.Speakers[BestIndex].BarkType;
+				// only if we play with delay remove current speaker
+				if (ManagerRules.BarkRule == EBarkPlayingRule::PLAY_WITH_DELAY)
+				{
+					BarkData.Speakers.RemoveAtSwap(BestIndex);
+				}
+
+				if (Comp->OnPlayBark(BarkData.EmiterPosition, BarkType))
+				{
+					return true;
+				}
+				else if (ManagerRules.BarkRule != EBarkPlayingRule::PLAY_WITH_DELAY)
+				{
+					BarkData.Speakers.RemoveAtSwap(BestIndex);
+				}
 			}
 		}
 	}
-	else
-	{
-		BarkData->BarkReleaseTime = GetWorld()->GetTimeSeconds() + ManagerRules.BarkDelayTime;
-	}
 
-	ProcessBark(Reason, *BarkData);
-}
-
-void UDialogueManager::ProcessBark(AActor* BarkKey, FBarkGenericData& BarkData)
-{
-	if (BarkData.Speakers.IsEmpty())
-	{
-		BarkEmiterData.Remove(BarkKey);
-
-		if (BarkEmiterData.IsEmpty() && IsValid(PerceptionHelper))
-		{
-			PerceptionHelper->UnregisterComponent();
-		}
-		return;
-	}
-
-	// keep asking another actor
-	SendOnPlayBark(BarkKey, BarkData.Speakers);
+	return false;
 }
 
 void UDialogueManager::RemoveActorFromDialogue(int DialogueID, AActor* Actor)

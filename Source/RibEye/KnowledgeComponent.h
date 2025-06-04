@@ -23,6 +23,22 @@ public:
 	float LastKnownTime;
 };
 
+USTRUCT(BlueprintType)
+struct FLastKnownSoundPosition
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(BlueprintReadWrite)
+	FVector LastKnownPosition;
+
+	UPROPERTY(BlueprintReadWrite)
+	float LastKnownTime;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Resolved;
+};
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FKnowledgeComponentOnTargetSelectedSignature, AActor*, Target);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FKnowledgeComponentOnLastTargetLostSignature, AActor*, Target, const FLastKnownData&, LastKnownData);
@@ -43,6 +59,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	TMap<AActor*, FLastKnownData> LastKnownData;
+	TArray<FLastKnownSoundPosition> LastKnownSoundPosition;
 	TArray<AActor*> SpottedEnemies;
 
 	USocialComponent* SComp;
@@ -68,4 +85,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Group")
 	bool IsResolvedAllyNearby(FVector Position, EAlert MinAlertLevel) const;
+
+	UFUNCTION(BlueprintCallable, Category = "Knowledge")
+	void RegisterSound(const FVector& EmiterPos, bool IsResolved = false);
+
+	// this function is an assumption, that AI barked to react on these sounds!
+	UFUNCTION(BlueprintCallable, Category = "Knowledge")
+	void ResolveSound(const FVector& AllyPos);
+
+	UFUNCTION(BlueprintCallable, Category = "Knowledge")
+	bool IsSoundResolved(const FVector& EmiterPos) const;
 };

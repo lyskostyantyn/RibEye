@@ -11,6 +11,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeDialogueComponent() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 RIBEYE_API UClass* Z_Construct_UClass_UDialogueComponent();
@@ -1016,42 +1017,62 @@ DEFINE_FUNCTION(UDialogueComponent::execOnPendingToJoinDialogue)
 // Begin Class UDialogueComponent Function OnPlayBark
 struct DialogueComponent_eventOnPlayBark_Parms
 {
-	AActor* Instigator;
+	FVector EmiterPos;
 	EBarkType BarkType;
+	bool ReturnValue;
+
+	/** Constructor, initializes return property only **/
+	DialogueComponent_eventOnPlayBark_Parms()
+		: ReturnValue(false)
+	{
+	}
 };
 static const FName NAME_UDialogueComponent_OnPlayBark = FName(TEXT("OnPlayBark"));
-void UDialogueComponent::OnPlayBark(AActor* Instigator, EBarkType BarkType)
+bool UDialogueComponent::OnPlayBark(FVector const& EmiterPos, EBarkType BarkType)
 {
 	DialogueComponent_eventOnPlayBark_Parms Parms;
-	Parms.Instigator=Instigator;
+	Parms.EmiterPos=EmiterPos;
 	Parms.BarkType=BarkType;
 	UFunction* Func = FindFunctionChecked(NAME_UDialogueComponent_OnPlayBark);
 	ProcessEvent(Func,&Parms);
+	return !!Parms.ReturnValue;
 }
 struct Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 		{ "Category", "Dialogue" },
+		{ "ForceAsFunction", "" },
 		{ "ModuleRelativePath", "DialogueComponent.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EmiterPos_MetaData[] = {
+		{ "NativeConst", "" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Instigator;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_EmiterPos;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_BarkType_Underlying;
 	static const UECodeGen_Private::FEnumPropertyParams NewProp_BarkType;
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_Instigator = { "Instigator", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, Instigator), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_EmiterPos = { "EmiterPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, EmiterPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmiterPos_MetaData), NewProp_EmiterPos_MetaData) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType = { "BarkType", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, BarkType), Z_Construct_UEnum_RibEye_EBarkType, METADATA_PARAMS(0, nullptr) }; // 3398760379
+void Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((DialogueComponent_eventOnPlayBark_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(DialogueComponent_eventOnPlayBark_Parms), &Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_Instigator,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_EmiterPos,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_ReturnValue,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueComponent, nullptr, "OnPlayBark", nullptr, nullptr, Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers), sizeof(DialogueComponent_eventOnPlayBark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UDialogueComponent, nullptr, "OnPlayBark", nullptr, nullptr, Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::PropPointers), sizeof(DialogueComponent_eventOnPlayBark_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08C20800, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::Function_MetaDataParams), Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::Function_MetaDataParams) };
 static_assert(sizeof(DialogueComponent_eventOnPlayBark_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UDialogueComponent_OnPlayBark()
 {
@@ -1227,7 +1248,7 @@ struct Z_Construct_UClass_UDialogueComponent_Statics
 		{ &Z_Construct_UFunction_UDialogueComponent_OnDialogueSpoke, "OnDialogueSpoke" }, // 1390690155
 		{ &Z_Construct_UFunction_UDialogueComponent_OnLeftPendingDialogue, "OnLeftPendingDialogue" }, // 2916121462
 		{ &Z_Construct_UFunction_UDialogueComponent_OnPendingToJoinDialogue, "OnPendingToJoinDialogue" }, // 3972663113
-		{ &Z_Construct_UFunction_UDialogueComponent_OnPlayBark, "OnPlayBark" }, // 2236762204
+		{ &Z_Construct_UFunction_UDialogueComponent_OnPlayBark, "OnPlayBark" }, // 2546827924
 		{ &Z_Construct_UFunction_UDialogueComponent_RefreshPendingToJoinDialogueTime, "RefreshPendingToJoinDialogueTime" }, // 3815147172
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -1314,10 +1335,10 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ FDialoguePendingToJoin::StaticStruct, Z_Construct_UScriptStruct_FDialoguePendingToJoin_Statics::NewStructOps, TEXT("DialoguePendingToJoin"), &Z_Registration_Info_UScriptStruct_DialoguePendingToJoin, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FDialoguePendingToJoin), 688949987U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UDialogueComponent, UDialogueComponent::StaticClass, TEXT("UDialogueComponent"), &Z_Registration_Info_UClass_UDialogueComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueComponent), 2647885770U) },
+		{ Z_Construct_UClass_UDialogueComponent, UDialogueComponent::StaticClass, TEXT("UDialogueComponent"), &Z_Registration_Info_UClass_UDialogueComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueComponent), 1394009528U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_3567743931(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_1009862837(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ScriptStructInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::EnumInfo));

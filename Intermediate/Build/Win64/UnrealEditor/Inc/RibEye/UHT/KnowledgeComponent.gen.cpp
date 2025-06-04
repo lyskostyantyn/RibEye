@@ -19,6 +19,7 @@ RIBEYE_API UEnum* Z_Construct_UEnum_RibEye_EAlert();
 RIBEYE_API UFunction* Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnLastTargetLostSignature__DelegateSignature();
 RIBEYE_API UFunction* Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnTargetSelectedSignature__DelegateSignature();
 RIBEYE_API UScriptStruct* Z_Construct_UScriptStruct_FLastKnownData();
+RIBEYE_API UScriptStruct* Z_Construct_UScriptStruct_FLastKnownSoundPosition();
 UPackage* Z_Construct_UPackage__Script_RibEye();
 // End Cross Module References
 
@@ -97,6 +98,87 @@ UScriptStruct* Z_Construct_UScriptStruct_FLastKnownData()
 	return Z_Registration_Info_UScriptStruct_LastKnownData.InnerSingleton;
 }
 // End ScriptStruct FLastKnownData
+
+// Begin ScriptStruct FLastKnownSoundPosition
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_LastKnownSoundPosition;
+class UScriptStruct* FLastKnownSoundPosition::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FLastKnownSoundPosition, (UObject*)Z_Construct_UPackage__Script_RibEye(), TEXT("LastKnownSoundPosition"));
+	}
+	return Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.OuterSingleton;
+}
+template<> RIBEYE_API UScriptStruct* StaticStruct<FLastKnownSoundPosition>()
+{
+	return FLastKnownSoundPosition::StaticStruct();
+}
+struct Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LastKnownPosition_MetaData[] = {
+		{ "Category", "LastKnownSoundPosition" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LastKnownTime_MetaData[] = {
+		{ "Category", "LastKnownSoundPosition" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Resolved_MetaData[] = {
+		{ "Category", "LastKnownSoundPosition" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_LastKnownPosition;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_LastKnownTime;
+	static void NewProp_Resolved_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_Resolved;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FLastKnownSoundPosition>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_LastKnownPosition = { "LastKnownPosition", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownSoundPosition, LastKnownPosition), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownPosition_MetaData), NewProp_LastKnownPosition_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_LastKnownTime = { "LastKnownTime", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FLastKnownSoundPosition, LastKnownTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastKnownTime_MetaData), NewProp_LastKnownTime_MetaData) };
+void Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_Resolved_SetBit(void* Obj)
+{
+	((FLastKnownSoundPosition*)Obj)->Resolved = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_Resolved = { "Resolved", nullptr, (EPropertyFlags)0x0010000000000004, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FLastKnownSoundPosition), &Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_Resolved_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Resolved_MetaData), NewProp_Resolved_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_LastKnownPosition,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_LastKnownTime,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewProp_Resolved,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_RibEye,
+	nullptr,
+	&NewStructOps,
+	"LastKnownSoundPosition",
+	Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::PropPointers),
+	sizeof(FLastKnownSoundPosition),
+	alignof(FLastKnownSoundPosition),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000001),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FLastKnownSoundPosition()
+{
+	if (!Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.InnerSingleton, Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::StructParams);
+	}
+	return Z_Registration_Info_UScriptStruct_LastKnownSoundPosition.InnerSingleton;
+}
+// End ScriptStruct FLastKnownSoundPosition
 
 // Begin Delegate FKnowledgeComponentOnTargetSelectedSignature
 struct Z_Construct_UDelegateFunction_RibEye_KnowledgeComponentOnTargetSelectedSignature__DelegateSignature_Statics
@@ -303,6 +385,61 @@ DEFINE_FUNCTION(UKnowledgeComponent::execIsResolvedAllyNearby)
 }
 // End Class UKnowledgeComponent Function IsResolvedAllyNearby
 
+// Begin Class UKnowledgeComponent Function IsSoundResolved
+struct Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics
+{
+	struct KnowledgeComponent_eventIsSoundResolved_Parms
+	{
+		FVector EmiterPos;
+		bool ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Knowledge" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EmiterPos_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_EmiterPos;
+	static void NewProp_ReturnValue_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_EmiterPos = { "EmiterPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(KnowledgeComponent_eventIsSoundResolved_Parms, EmiterPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmiterPos_MetaData), NewProp_EmiterPos_MetaData) };
+void Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+{
+	((KnowledgeComponent_eventIsSoundResolved_Parms*)Obj)->ReturnValue = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(KnowledgeComponent_eventIsSoundResolved_Parms), &Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_EmiterPos,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UKnowledgeComponent, nullptr, "IsSoundResolved", nullptr, nullptr, Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::PropPointers), sizeof(Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::KnowledgeComponent_eventIsSoundResolved_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::Function_MetaDataParams), Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::KnowledgeComponent_eventIsSoundResolved_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UKnowledgeComponent::execIsSoundResolved)
+{
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_EmiterPos);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(bool*)Z_Param__Result=P_THIS->IsSoundResolved(Z_Param_Out_EmiterPos);
+	P_NATIVE_END;
+}
+// End Class UKnowledgeComponent Function IsSoundResolved
+
 // Begin Class UKnowledgeComponent Function OnEnemySpotted
 struct Z_Construct_UFunction_UKnowledgeComponent_OnEnemySpotted_Statics
 {
@@ -399,6 +536,115 @@ DEFINE_FUNCTION(UKnowledgeComponent::execRegisterKnowledge)
 }
 // End Class UKnowledgeComponent Function RegisterKnowledge
 
+// Begin Class UKnowledgeComponent Function RegisterSound
+struct Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics
+{
+	struct KnowledgeComponent_eventRegisterSound_Parms
+	{
+		FVector EmiterPos;
+		bool IsResolved;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Knowledge" },
+		{ "CPP_Default_IsResolved", "false" },
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_EmiterPos_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_EmiterPos;
+	static void NewProp_IsResolved_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_IsResolved;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_EmiterPos = { "EmiterPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(KnowledgeComponent_eventRegisterSound_Parms, EmiterPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmiterPos_MetaData), NewProp_EmiterPos_MetaData) };
+void Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_IsResolved_SetBit(void* Obj)
+{
+	((KnowledgeComponent_eventRegisterSound_Parms*)Obj)->IsResolved = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_IsResolved = { "IsResolved", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(KnowledgeComponent_eventRegisterSound_Parms), &Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_IsResolved_SetBit, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_EmiterPos,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::NewProp_IsResolved,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UKnowledgeComponent, nullptr, "RegisterSound", nullptr, nullptr, Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::PropPointers), sizeof(Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::KnowledgeComponent_eventRegisterSound_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::KnowledgeComponent_eventRegisterSound_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UKnowledgeComponent_RegisterSound()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UKnowledgeComponent_RegisterSound_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UKnowledgeComponent::execRegisterSound)
+{
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_EmiterPos);
+	P_GET_UBOOL(Z_Param_IsResolved);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->RegisterSound(Z_Param_Out_EmiterPos,Z_Param_IsResolved);
+	P_NATIVE_END;
+}
+// End Class UKnowledgeComponent Function RegisterSound
+
+// Begin Class UKnowledgeComponent Function ResolveSound
+struct Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics
+{
+	struct KnowledgeComponent_eventResolveSound_Parms
+	{
+		FVector AllyPos;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Knowledge" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// this function is an assumption, that AI barked to react on these sounds!\n" },
+#endif
+		{ "ModuleRelativePath", "KnowledgeComponent.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "this function is an assumption, that AI barked to react on these sounds!" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AllyPos_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_AllyPos;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::NewProp_AllyPos = { "AllyPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(KnowledgeComponent_eventResolveSound_Parms, AllyPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AllyPos_MetaData), NewProp_AllyPos_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::NewProp_AllyPos,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UKnowledgeComponent, nullptr, "ResolveSound", nullptr, nullptr, Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::PropPointers), sizeof(Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::KnowledgeComponent_eventResolveSound_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04C20401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::Function_MetaDataParams), Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::KnowledgeComponent_eventResolveSound_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UKnowledgeComponent_ResolveSound()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UKnowledgeComponent_ResolveSound_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UKnowledgeComponent::execResolveSound)
+{
+	P_GET_STRUCT_REF(FVector,Z_Param_Out_AllyPos);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ResolveSound(Z_Param_Out_AllyPos);
+	P_NATIVE_END;
+}
+// End Class UKnowledgeComponent Function ResolveSound
+
 // Begin Class UKnowledgeComponent
 void UKnowledgeComponent::StaticRegisterNativesUKnowledgeComponent()
 {
@@ -406,8 +652,11 @@ void UKnowledgeComponent::StaticRegisterNativesUKnowledgeComponent()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetSpottedActors", &UKnowledgeComponent::execGetSpottedActors },
 		{ "IsResolvedAllyNearby", &UKnowledgeComponent::execIsResolvedAllyNearby },
+		{ "IsSoundResolved", &UKnowledgeComponent::execIsSoundResolved },
 		{ "OnEnemySpotted", &UKnowledgeComponent::execOnEnemySpotted },
 		{ "RegisterKnowledge", &UKnowledgeComponent::execRegisterKnowledge },
+		{ "RegisterSound", &UKnowledgeComponent::execRegisterSound },
+		{ "ResolveSound", &UKnowledgeComponent::execResolveSound },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -443,8 +692,11 @@ struct Z_Construct_UClass_UKnowledgeComponent_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UKnowledgeComponent_GetSpottedActors, "GetSpottedActors" }, // 1543638275
 		{ &Z_Construct_UFunction_UKnowledgeComponent_IsResolvedAllyNearby, "IsResolvedAllyNearby" }, // 3802631898
+		{ &Z_Construct_UFunction_UKnowledgeComponent_IsSoundResolved, "IsSoundResolved" }, // 3199670003
 		{ &Z_Construct_UFunction_UKnowledgeComponent_OnEnemySpotted, "OnEnemySpotted" }, // 36073326
 		{ &Z_Construct_UFunction_UKnowledgeComponent_RegisterKnowledge, "RegisterKnowledge" }, // 1440025783
+		{ &Z_Construct_UFunction_UKnowledgeComponent_RegisterSound, "RegisterSound" }, // 4116087904
+		{ &Z_Construct_UFunction_UKnowledgeComponent_ResolveSound, "ResolveSound" }, // 1349005317
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -500,12 +752,13 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FLastKnownData::StaticStruct, Z_Construct_UScriptStruct_FLastKnownData_Statics::NewStructOps, TEXT("LastKnownData"), &Z_Registration_Info_UScriptStruct_LastKnownData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLastKnownData), 1350844460U) },
+		{ FLastKnownSoundPosition::StaticStruct, Z_Construct_UScriptStruct_FLastKnownSoundPosition_Statics::NewStructOps, TEXT("LastKnownSoundPosition"), &Z_Registration_Info_UScriptStruct_LastKnownSoundPosition, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FLastKnownSoundPosition), 1133754513U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UKnowledgeComponent, UKnowledgeComponent::StaticClass, TEXT("UKnowledgeComponent"), &Z_Registration_Info_UClass_UKnowledgeComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UKnowledgeComponent), 1559017374U) },
+		{ Z_Construct_UClass_UKnowledgeComponent, UKnowledgeComponent::StaticClass, TEXT("UKnowledgeComponent"), &Z_Registration_Info_UClass_UKnowledgeComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UKnowledgeComponent), 98330441U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_2049950922(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_1933050639(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_KnowledgeComponent_h_Statics::ScriptStructInfo),
 	nullptr, 0);
