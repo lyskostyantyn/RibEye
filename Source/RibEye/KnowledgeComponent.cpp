@@ -112,6 +112,7 @@ void UKnowledgeComponent::RegisterSound(const FVector& EmiterPos, bool IsResolve
 		// assume that is the same source
 		if ((EmiterPos - Sound.LastKnownPosition).SquaredLength() < BarkDistance)
 		{
+			// check if sound is outdated !!!
 			Sound.LastKnownTime = GetWorld()->GetTimeSeconds();
 			return;
 		}
