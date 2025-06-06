@@ -112,7 +112,7 @@ protected:
 
 	int ID = -1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings")
 	FSocialSettings Settings;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Settings")
