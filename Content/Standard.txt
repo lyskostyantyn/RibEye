@@ -37,3 +37,7 @@ COM_INV_S2_ASK_M_J	1		1	5.0		If you want I can join instead
 COM_GRE_IGN		1		1	5.0		That dude just ignored you
 INV_NOTIFY		1		1	5.0		I heard, I'll handle that
 INV_NOTIFY_MULT		2		1	5.0		Have you heard that too? Let's check that position
+INV_IGNORE		2		1	5.0		Ah, I guess they'll handle that
+INV_REP_NOISE		2		1	5.0		What are hell? Is everything fine here?
+INV_M_REP_NOISE		2		1	5.0		Yeah, we will handle that.
+INV_REP_JOIN		2		1	5.0		No one replied. Let's check together

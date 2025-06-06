@@ -44,6 +44,11 @@ void USocialComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 			}
 		}
 	}
+
+	if (AnoyanceLevel > 0 && GetWorld()->GetTimeSeconds() > LastAnoyanceUpdateTime + AnnoyanceCooldownDelay)
+	{
+		AnoyanceLevel -= AnnoyanceCooldownRate * DeltaTime;
+	}
 }
 
 void USocialComponent::SetAlertState(EAlert NewAlertState)
@@ -53,6 +58,7 @@ void USocialComponent::SetAlertState(EAlert NewAlertState)
 		return;
 	}
 	AlertState = NewAlertState;
+	LastAlertUpdateTime = GetWorld()->GetTimeSeconds();
 	//AddActorToGroup(GetOwner(), NewAlertState);
 	OnAlertnessChanged.Broadcast(AlertState);
 }
@@ -324,6 +330,12 @@ bool USocialComponent::IsAllyResolved(AActor* Ally) const
 float USocialComponent::GetStateForgetTime(EAlert State) const
 {
 	return StateForgetTime;
+}
+
+void USocialComponent::AddAnnoyanceLevel(float Level)
+{
+	AnoyanceLevel += Level;
+	LastAnoyanceUpdateTime = GetWorld()->GetTimeSeconds();
 }
 
 FString USocialComponent::GetDebugText() const

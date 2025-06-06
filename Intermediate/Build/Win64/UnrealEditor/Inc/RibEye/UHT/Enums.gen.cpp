@@ -271,8 +271,12 @@ struct Z_Construct_UEnum_RibEye_EBarkType_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 		{ "BARK_NUM.Name", "EBarkType::BARK_NUM" },
 		{ "BlueprintType", "true" },
+		{ "INV_IGNORE.DisplayName", "Ignore investigation (aware of allies)" },
+		{ "INV_IGNORE.Name", "EBarkType::INV_IGNORE" },
 		{ "INV_INFORM.DisplayName", "Inform about investigating" },
 		{ "INV_INFORM.Name", "EBarkType::INV_INFORM" },
+		{ "INV_REP_NOISE.DisplayName", "A lot of noise detected" },
+		{ "INV_REP_NOISE.Name", "EBarkType::INV_REP_NOISE" },
 		{ "ModuleRelativePath", "Enums.h" },
 		{ "SURPRISED.DisplayName", "Suprised" },
 		{ "SURPRISED.Name", "EBarkType::SURPRISED" },
@@ -281,6 +285,8 @@ struct Z_Construct_UEnum_RibEye_EBarkType_Statics
 	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
 		{ "EBarkType::SURPRISED", (int64)EBarkType::SURPRISED },
 		{ "EBarkType::INV_INFORM", (int64)EBarkType::INV_INFORM },
+		{ "EBarkType::INV_IGNORE", (int64)EBarkType::INV_IGNORE },
+		{ "EBarkType::INV_REP_NOISE", (int64)EBarkType::INV_REP_NOISE },
 		{ "EBarkType::BARK_NUM", (int64)EBarkType::BARK_NUM },
 	};
 	static const UECodeGen_Private::FEnumParams EnumParams;
@@ -784,7 +790,7 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ EPendingType_StaticEnum, TEXT("EPendingType"), &Z_Registration_Info_UEnum_EPendingType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 279531135U) },
 		{ EPhraseType_StaticEnum, TEXT("EPhraseType"), &Z_Registration_Info_UEnum_EPhraseType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1349684343U) },
 		{ EVoicePreset_StaticEnum, TEXT("EVoicePreset"), &Z_Registration_Info_UEnum_EVoicePreset, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3822199425U) },
-		{ EBarkType_StaticEnum, TEXT("EBarkType"), &Z_Registration_Info_UEnum_EBarkType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3556101725U) },
+		{ EBarkType_StaticEnum, TEXT("EBarkType"), &Z_Registration_Info_UEnum_EBarkType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1349529781U) },
 		{ ELineType_StaticEnum, TEXT("ELineType"), &Z_Registration_Info_UEnum_ELineType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4109494101U) },
 		{ EAllianceType_StaticEnum, TEXT("EAllianceType"), &Z_Registration_Info_UEnum_EAllianceType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2366655750U) },
 		{ EIgnoreDialogueType_StaticEnum, TEXT("EIgnoreDialogueType"), &Z_Registration_Info_UEnum_EIgnoreDialogueType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1557341401U) },
@@ -794,7 +800,7 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ EBarkPlayingRule_StaticEnum, TEXT("EBarkPlayingRule"), &Z_Registration_Info_UEnum_EBarkPlayingRule, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1912644817U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_58223062(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_491420058(TEXT("/Script/RibEye"),
 	nullptr, 0,
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_Enums_h_Statics::EnumInfo));

@@ -66,6 +66,14 @@ void UDialogueComponent::ForgetDialogue(int DialogueID, bool IterateThroughPendi
 	if (Dialogue && Dialogue->IsParticipant)
 	{
 		OnDialogueLeft(DialogueID);
+		const FDialogueLine& DialogueLine = Dialogue->Dialogue.Last();
+		if (DialogueLine.Speaker == GetOwner() && DialogueLine.Replier != nullptr)
+		{
+			if (DialogueManager && !DialogueManager->IsMainPartEnded(DialogueID))
+			{
+				OnDialogueIgnored(DialogueID);
+			}
+		}
 	}
 
 	if (DialogueID == LastDialogueID)

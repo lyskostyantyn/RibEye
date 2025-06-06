@@ -1059,7 +1059,7 @@ struct Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics
 };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_EmiterPos = { "EmiterPos", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, EmiterPos), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EmiterPos_MetaData), NewProp_EmiterPos_MetaData) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType = { "BarkType", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, BarkType), Z_Construct_UEnum_RibEye_EBarkType, METADATA_PARAMS(0, nullptr) }; // 3556101725
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_BarkType = { "BarkType", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(DialogueComponent_eventOnPlayBark_Parms, BarkType), Z_Construct_UEnum_RibEye_EBarkType, METADATA_PARAMS(0, nullptr) }; // 1349529781
 void Z_Construct_UFunction_UDialogueComponent_OnPlayBark_Statics::NewProp_ReturnValue_SetBit(void* Obj)
 {
 	((DialogueComponent_eventOnPlayBark_Parms*)Obj)->ReturnValue = 1;
@@ -1248,7 +1248,7 @@ struct Z_Construct_UClass_UDialogueComponent_Statics
 		{ &Z_Construct_UFunction_UDialogueComponent_OnDialogueSpoke, "OnDialogueSpoke" }, // 1390690155
 		{ &Z_Construct_UFunction_UDialogueComponent_OnLeftPendingDialogue, "OnLeftPendingDialogue" }, // 2916121462
 		{ &Z_Construct_UFunction_UDialogueComponent_OnPendingToJoinDialogue, "OnPendingToJoinDialogue" }, // 3972663113
-		{ &Z_Construct_UFunction_UDialogueComponent_OnPlayBark, "OnPlayBark" }, // 3994524338
+		{ &Z_Construct_UFunction_UDialogueComponent_OnPlayBark, "OnPlayBark" }, // 2228704564
 		{ &Z_Construct_UFunction_UDialogueComponent_RefreshPendingToJoinDialogueTime, "RefreshPendingToJoinDialogueTime" }, // 3815147172
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -1335,10 +1335,10 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ FDialoguePendingToJoin::StaticStruct, Z_Construct_UScriptStruct_FDialoguePendingToJoin_Statics::NewStructOps, TEXT("DialoguePendingToJoin"), &Z_Registration_Info_UScriptStruct_DialoguePendingToJoin, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FDialoguePendingToJoin), 688949987U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UDialogueComponent, UDialogueComponent::StaticClass, TEXT("UDialogueComponent"), &Z_Registration_Info_UClass_UDialogueComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueComponent), 3681362093U) },
+		{ Z_Construct_UClass_UDialogueComponent, UDialogueComponent::StaticClass, TEXT("UDialogueComponent"), &Z_Registration_Info_UClass_UDialogueComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UDialogueComponent), 3183608552U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_2331783812(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_496965172(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::ScriptStructInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_DialogueComponent_h_Statics::EnumInfo));

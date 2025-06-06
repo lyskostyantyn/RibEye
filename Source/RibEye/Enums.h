@@ -42,6 +42,8 @@ enum class EBarkType : uint8
 {
 	SURPRISED UMETA(DisplayName = "Suprised"),
 	INV_INFORM UMETA(DisplayName = "Inform about investigating"),
+	INV_IGNORE UMETA(DisplayName = "Ignore investigation (aware of allies)"),
+	INV_REP_NOISE UMETA(DisplayName = "A lot of noise detected"),
 	BARK_NUM
 };
 

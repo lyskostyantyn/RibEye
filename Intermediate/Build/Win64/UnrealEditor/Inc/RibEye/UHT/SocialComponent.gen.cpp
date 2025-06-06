@@ -474,6 +474,49 @@ DEFINE_FUNCTION(USocialComponent::execAddActorToGroup)
 }
 // End Class USocialComponent Function AddActorToGroup
 
+// Begin Class USocialComponent Function AddAnnoyanceLevel
+struct Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics
+{
+	struct SocialComponent_eventAddAnnoyanceLevel_Parms
+	{
+		float Level;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_Level;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::NewProp_Level = { "Level", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(SocialComponent_eventAddAnnoyanceLevel_Parms, Level), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::NewProp_Level,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocialComponent, nullptr, "AddAnnoyanceLevel", nullptr, nullptr, Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::PropPointers), sizeof(Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::SocialComponent_eventAddAnnoyanceLevel_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::Function_MetaDataParams), Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::SocialComponent_eventAddAnnoyanceLevel_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(USocialComponent::execAddAnnoyanceLevel)
+{
+	P_GET_PROPERTY(FFloatProperty,Z_Param_Level);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->AddAnnoyanceLevel(Z_Param_Level);
+	P_NATIVE_END;
+}
+// End Class USocialComponent Function AddAnnoyanceLevel
+
 // Begin Class USocialComponent Function AddMembersToGroup
 struct Z_Construct_UFunction_USocialComponent_AddMembersToGroup_Statics
 {
@@ -584,6 +627,48 @@ DEFINE_FUNCTION(USocialComponent::execClearGroupMembers)
 	P_NATIVE_END;
 }
 // End Class USocialComponent Function ClearGroupMembers
+
+// Begin Class USocialComponent Function GetAnnoyanceLevel
+struct Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics
+{
+	struct SocialComponent_eventGetAnnoyanceLevel_Parms
+	{
+		float ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(SocialComponent_eventGetAnnoyanceLevel_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocialComponent, nullptr, "GetAnnoyanceLevel", nullptr, nullptr, Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::PropPointers), sizeof(Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::SocialComponent_eventGetAnnoyanceLevel_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::Function_MetaDataParams), Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::SocialComponent_eventGetAnnoyanceLevel_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(USocialComponent::execGetAnnoyanceLevel)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(float*)Z_Param__Result=P_THIS->GetAnnoyanceLevel();
+	P_NATIVE_END;
+}
+// End Class USocialComponent Function GetAnnoyanceLevel
 
 // Begin Class USocialComponent Function GetDebugText
 struct Z_Construct_UFunction_USocialComponent_GetDebugText_Statics
@@ -943,6 +1028,48 @@ DEFINE_FUNCTION(USocialComponent::execGetTextID)
 	P_NATIVE_END;
 }
 // End Class USocialComponent Function GetTextID
+
+// Begin Class USocialComponent Function GetTimeInCurrentState
+struct Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics
+{
+	struct SocialComponent_eventGetTimeInCurrentState_Parms
+	{
+		float ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(SocialComponent_eventGetTimeInCurrentState_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USocialComponent, nullptr, "GetTimeInCurrentState", nullptr, nullptr, Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::PropPointers), sizeof(Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::SocialComponent_eventGetTimeInCurrentState_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::Function_MetaDataParams), Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::SocialComponent_eventGetTimeInCurrentState_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(USocialComponent::execGetTimeInCurrentState)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(float*)Z_Param__Result=P_THIS->GetTimeInCurrentState();
+	P_NATIVE_END;
+}
+// End Class USocialComponent Function GetTimeInCurrentState
 
 // Begin Class USocialComponent Function IsAllyResolved
 struct Z_Construct_UFunction_USocialComponent_IsAllyResolved_Statics
@@ -1361,8 +1488,10 @@ void USocialComponent::StaticRegisterNativesUSocialComponent()
 	UClass* Class = USocialComponent::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "AddActorToGroup", &USocialComponent::execAddActorToGroup },
+		{ "AddAnnoyanceLevel", &USocialComponent::execAddAnnoyanceLevel },
 		{ "AddMembersToGroup", &USocialComponent::execAddMembersToGroup },
 		{ "ClearGroupMembers", &USocialComponent::execClearGroupMembers },
+		{ "GetAnnoyanceLevel", &USocialComponent::execGetAnnoyanceLevel },
 		{ "GetDebugText", &USocialComponent::execGetDebugText },
 		{ "GetFaction", &USocialComponent::execGetFaction },
 		{ "GetGroupMembers", &USocialComponent::execGetGroupMembers },
@@ -1371,6 +1500,7 @@ void USocialComponent::StaticRegisterNativesUSocialComponent()
 		{ "GetMySocialGroup", &USocialComponent::execGetMySocialGroup },
 		{ "GetSocialGroupSize", &USocialComponent::execGetSocialGroupSize },
 		{ "GetTextID", &USocialComponent::execGetTextID },
+		{ "GetTimeInCurrentState", &USocialComponent::execGetTimeInCurrentState },
 		{ "IsAllyResolved", &USocialComponent::execIsAllyResolved },
 		{ "IsFromMySocialGroup", &USocialComponent::execIsFromMySocialGroup },
 		{ "RemoveActorFromGroup", &USocialComponent::execRemoveActorFromGroup },
@@ -1406,7 +1536,19 @@ struct Z_Construct_UClass_USocialComponent_Statics
 		{ "Category", "State" },
 		{ "ModuleRelativePath", "SocialComponent.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AnoyanceLevel_MetaData[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_StateForgetTime_MetaData[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AnnoyanceCooldownDelay_MetaData[] = {
+		{ "Category", "State" },
+		{ "ModuleRelativePath", "SocialComponent.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_AnnoyanceCooldownRate_MetaData[] = {
 		{ "Category", "State" },
 		{ "ModuleRelativePath", "SocialComponent.h" },
 	};
@@ -1430,7 +1572,10 @@ struct Z_Construct_UClass_USocialComponent_Statics
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Faction;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_AlertState_Underlying;
 	static const UECodeGen_Private::FEnumPropertyParams NewProp_AlertState;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_AnoyanceLevel;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_StateForgetTime;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_AnnoyanceCooldownDelay;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_AnnoyanceCooldownRate;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_Settings;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_AllyKnownStates_ValueProp;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AllyKnownStates_Key_KeyProp;
@@ -1441,8 +1586,10 @@ struct Z_Construct_UClass_USocialComponent_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_USocialComponent_AddActorToGroup, "AddActorToGroup" }, // 3147010010
+		{ &Z_Construct_UFunction_USocialComponent_AddAnnoyanceLevel, "AddAnnoyanceLevel" }, // 2106761345
 		{ &Z_Construct_UFunction_USocialComponent_AddMembersToGroup, "AddMembersToGroup" }, // 2624664568
 		{ &Z_Construct_UFunction_USocialComponent_ClearGroupMembers, "ClearGroupMembers" }, // 3085387691
+		{ &Z_Construct_UFunction_USocialComponent_GetAnnoyanceLevel, "GetAnnoyanceLevel" }, // 1960841811
 		{ &Z_Construct_UFunction_USocialComponent_GetDebugText, "GetDebugText" }, // 1908033431
 		{ &Z_Construct_UFunction_USocialComponent_GetFaction, "GetFaction" }, // 618780395
 		{ &Z_Construct_UFunction_USocialComponent_GetGroupMembers, "GetGroupMembers" }, // 3000455889
@@ -1451,6 +1598,7 @@ struct Z_Construct_UClass_USocialComponent_Statics
 		{ &Z_Construct_UFunction_USocialComponent_GetMySocialGroup, "GetMySocialGroup" }, // 3553263637
 		{ &Z_Construct_UFunction_USocialComponent_GetSocialGroupSize, "GetSocialGroupSize" }, // 855891297
 		{ &Z_Construct_UFunction_USocialComponent_GetTextID, "GetTextID" }, // 891756101
+		{ &Z_Construct_UFunction_USocialComponent_GetTimeInCurrentState, "GetTimeInCurrentState" }, // 3802177861
 		{ &Z_Construct_UFunction_USocialComponent_IsAllyResolved, "IsAllyResolved" }, // 4058008430
 		{ &Z_Construct_UFunction_USocialComponent_IsFromMySocialGroup, "IsFromMySocialGroup" }, // 2849999539
 		{ &Z_Construct_UFunction_USocialComponent_RemoveActorFromGroup, "RemoveActorFromGroup" }, // 1348392749
@@ -1469,7 +1617,10 @@ struct Z_Construct_UClass_USocialComponent_Statics
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_Faction = { "Faction", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, Faction), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Faction_MetaData), NewProp_Faction_MetaData) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AlertState_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AlertState = { "AlertState", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, AlertState), Z_Construct_UEnum_RibEye_EAlert, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AlertState_MetaData), NewProp_AlertState_MetaData) }; // 3817312066
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AnoyanceLevel = { "AnoyanceLevel", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, AnoyanceLevel), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AnoyanceLevel_MetaData), NewProp_AnoyanceLevel_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_StateForgetTime = { "StateForgetTime", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, StateForgetTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StateForgetTime_MetaData), NewProp_StateForgetTime_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AnnoyanceCooldownDelay = { "AnnoyanceCooldownDelay", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, AnnoyanceCooldownDelay), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AnnoyanceCooldownDelay_MetaData), NewProp_AnnoyanceCooldownDelay_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AnnoyanceCooldownRate = { "AnnoyanceCooldownRate", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, AnnoyanceCooldownRate), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AnnoyanceCooldownRate_MetaData), NewProp_AnnoyanceCooldownRate_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_Settings = { "Settings", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USocialComponent, Settings), Z_Construct_UScriptStruct_FSocialSettings, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Settings_MetaData), NewProp_Settings_MetaData) }; // 752346135
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AllyKnownStates_ValueProp = { "AllyKnownStates", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UScriptStruct_FAllyKnownState, METADATA_PARAMS(0, nullptr) }; // 1705834529
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_USocialComponent_Statics::NewProp_AllyKnownStates_Key_KeyProp = { "AllyKnownStates_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
@@ -1480,7 +1631,10 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USocialCo
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_Faction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AlertState_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AlertState,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AnoyanceLevel,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_StateForgetTime,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AnnoyanceCooldownDelay,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AnnoyanceCooldownRate,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_Settings,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AllyKnownStates_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USocialComponent_Statics::NewProp_AllyKnownStates_Key_KeyProp,
@@ -1535,10 +1689,10 @@ struct Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Proje
 		{ FAllyGroup::StaticStruct, Z_Construct_UScriptStruct_FAllyGroup_Statics::NewStructOps, TEXT("AllyGroup"), &Z_Registration_Info_UScriptStruct_AllyGroup, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FAllyGroup), 489832726U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_USocialComponent, USocialComponent::StaticClass, TEXT("USocialComponent"), &Z_Registration_Info_UClass_USocialComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USocialComponent), 3962764255U) },
+		{ Z_Construct_UClass_USocialComponent, USocialComponent::StaticClass, TEXT("USocialComponent"), &Z_Registration_Info_UClass_USocialComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USocialComponent), 3166829415U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_3037473605(TEXT("/Script/RibEye"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_3296229797(TEXT("/Script/RibEye"),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_kostiantyn_lysenko_Documents_Unreal_Projects_RibEye_Source_RibEye_SocialComponent_h_Statics::ScriptStructInfo),
 	nullptr, 0);

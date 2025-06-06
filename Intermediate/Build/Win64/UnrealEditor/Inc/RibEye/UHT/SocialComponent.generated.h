@@ -59,6 +59,9 @@ RIBEYE_API void FSocialComponentOnAllyChangedStateSignature_DelegateWrapper(cons
 	DECLARE_FUNCTION(execGetID); \
 	DECLARE_FUNCTION(execSetupID); \
 	DECLARE_FUNCTION(execGetDebugText); \
+	DECLARE_FUNCTION(execGetTimeInCurrentState); \
+	DECLARE_FUNCTION(execAddAnnoyanceLevel); \
+	DECLARE_FUNCTION(execGetAnnoyanceLevel); \
 	DECLARE_FUNCTION(execGetFaction); \
 	DECLARE_FUNCTION(execShouldIgnoreAnsweringLineType); \
 	DECLARE_FUNCTION(execIsAllyResolved); \

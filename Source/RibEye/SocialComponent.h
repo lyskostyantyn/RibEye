@@ -94,10 +94,21 @@ protected:
 	int Faction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State")
-	EAlert AlertState;
+	EAlert AlertState = EAlert::PASSIVE;
+	float LastAlertUpdateTime = 0.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State")
+	float AnoyanceLevel = 0.f;
+	float LastAnoyanceUpdateTime = 0.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State")
 	float StateForgetTime = 60.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State")
+	float AnnoyanceCooldownDelay = 60.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "State")
+	float AnnoyanceCooldownRate = 0.1f;
 
 	int ID = -1;
 
@@ -166,6 +177,15 @@ public:
 	int GetFaction() const { return Faction; }
 
 	float GetStateForgetTime(EAlert State) const;
+
+	UFUNCTION(BlueprintCallable, Category = "State")
+	float GetAnnoyanceLevel() const { return AnoyanceLevel; }
+
+	UFUNCTION(BlueprintCallable, Category = "State")
+	void AddAnnoyanceLevel( float Level );
+
+	UFUNCTION(BlueprintCallable, Category = "State")
+	float GetTimeInCurrentState() const { return GetWorld()->GetTimeSeconds() - LastAlertUpdateTime; }
 
 	// DEBUG
 
