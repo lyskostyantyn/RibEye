@@ -417,10 +417,15 @@ int UDialogueManager::MakeADialogue(FDialogueLine DialogueLine)
 	++S_DIALOGUE_ID_GENERATOR;
 
 	FDialogueData Data = {
-		{DialogueLine.Speaker, DialogueLine.Replier},
+		{DialogueLine.Speaker},
 		{DialogueLine},
 		GetWorld()->GetTimeSeconds() + LinePlayInfo.DelayTime * ScaleDurationTime
 	};
+
+	if (IsValid(DialogueLine.Replier))
+	{
+		Data.Participants.Add(DialogueLine.Replier);
+	}
 
 	if (USocialComponent* SocialComp = DialogueLine.Speaker->GetComponentByClass<USocialComponent>())
 	{
@@ -483,6 +488,11 @@ bool UDialogueManager::ContinueDialogue(int DialogueID, FDialogueLine DialogueLi
 		{
 			Dialogue->Participants.Add(DialogueLine.Speaker);
 		}
+	}
+
+	if (Dialogue->Listeners.Contains(DialogueLine.Speaker))
+	{
+		Dialogue->Listeners.RemoveSingleSwap(DialogueLine.Speaker);
 	}
 	
 	if (!Dialogue->Participants.Contains(DialogueLine.Speaker))
@@ -622,6 +632,11 @@ bool UDialogueManager::AddToPendingParticipants(int DialogueID, AActor* Actor, f
 		return false;
 	}
 
+	if (Dialogue->Listeners.Contains(Actor))
+	{
+		Dialogue->Listeners.RemoveSingleSwap(Actor);
+	}
+
 	Dialogue->PendingParticipants.AddOrUpdate(Actor, Priority);
 	return true;
 }
@@ -647,7 +662,11 @@ bool UDialogueManager::AddToListeners(int DialogueID, AActor* Actor)
 		return false;
 	}
 
-	Dialogue->Listeners.AddUnique(Actor);
+	if ( !Dialogue->Participants.Contains(Actor) && !Dialogue->PendingParticipants.Contains(Actor))
+	{
+		Dialogue->Listeners.AddUnique(Actor);
+	}
+
 	return true;
 }
 
